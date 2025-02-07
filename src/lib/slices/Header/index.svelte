@@ -6,65 +6,39 @@
 </script>
 
 <section
-	class="w-full h-screen relative flex items-center justify-center"
+	class="w-full h-[550px] pt-36 relative flex items-center justify-center bg-black text-white"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
-	<div class="flex justify-center items-center relative gap-x-20">
-		<!-- Text Content -->
-		<hgroup class="z-10 text-left space-y-4">
-			<h1 class="text-8xl font-bold tracking-wider">{slice.primary.titre}</h1>
-			<h2 class="text-7xl">{slice.primary.sous_titre}</h2>
-			<p class="text-2xl">{slice.primary.slogan}</p>
-		</hgroup>
+	<!-- Grid Background -->
+	<div class="grid grid-cols-3 w-full h-full absolute inset-0">
+		<div
+			class="relative overflow-hidden opacity-30 hover:opacity-75 transition-opacity duration-200"
+		>
+			<PrismicImage field={slice.primary.image_1} class="w-full h-full object-cover" />
+		</div>
+		<div
+			class="relative overflow-hidden opacity-30 hover:opacity-75 transition-opacity duration-200"
+		>
+			<PrismicImage field={slice.primary.image_2} class="w-full h-full object-cover" />
+		</div>
+		<div
+			class="relative overflow-hidden opacity-30 hover:opacity-75 transition-opacity duration-200"
+		>
+			<PrismicImage field={slice.primary.image_3} class="w-full h-full object-cover" />
+		</div>
+	</div>
 
-		<!-- Portrait Image Container -->
-		<div class="relative z-10 w-[400px] border-2 border-black">
-			<!-- Blurred Animated Shapes Behind -->
-			<div
-				class="absolute -top-10 -left-16 w-56 h-56 rounded-full bg-pink-400 filter blur-2xl opacity-90 mix-blend-multiply shape"
-			></div>
-			<div
-				class="absolute -top-16 -right-12 w-56 h-56 rounded-full bg-yellow-400 filter blur-2xl opacity-90 mix-blend-multiply shape animation-delay-2000"
-			></div>
-			<div
-				class="absolute -bottom-5 left-1/2 transform -translate-x-1/2 w-56 h-56 rounded-full bg-violet-400 filter blur-2xl opacity-90 mix-blend-multiply shape animation-delay-4000"
-			></div>
-
-			<!-- Image -->
-			<PrismicImage class="w-full h-auto relative z-10" field={slice.primary.portrait} />
+	<!-- Text Content -->
+	<div
+		class="z-10 text-center space-y-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+	>
+		<h1 class="text-9xl font-bold tracking-wider shadow-lg">{slice.primary.titre}</h1>
+		<h2 class="text-7xl shadow-lg">{slice.primary.sous_titre}</h2>
+		<p class="text-2xl">{slice.primary.slogan}</p>
+		<div class="flex items-center justify-center gap-12 pt-8 pointer-events-auto">
+			<button class="border-2 py-2 px-4 border-black bg-white text-black rounded-3xl uppercase">Mes oeuvres</button>
+			<button class="border-2 py-2 px-4 border-white bg-black rounded-3xl uppercase">Contactez-moi</button>
 		</div>
 	</div>
 </section>
-
-<style>
-	.shape {
-		animation: blob 10s infinite linear;
-		position: absolute;
-		will-change: transform;
-	}
-
-	@keyframes blob {
-		0%,
-		100% {
-			transform: translate(0, 0) scale(1);
-		}
-		25% {
-			transform: translate(30px, -50px) scale(1.1);
-		}
-		50% {
-			transform: translate(-30px, 40px) scale(1.05);
-		}
-		75% {
-			transform: translate(20px, -20px) scale(0.95);
-		}
-	}
-
-	.animation-delay-2000 {
-		animation-delay: -2s;
-	}
-
-	.animation-delay-4000 {
-		animation-delay: -4s;
-	}
-</style>

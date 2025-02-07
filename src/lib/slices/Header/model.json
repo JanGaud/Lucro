@@ -12,22 +12,6 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "background": {
-          "type": "Image",
-          "config": {
-            "label": "Background",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "portrait": {
-          "type": "Image",
-          "config": {
-            "label": "Portrait",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
         "titre": {
           "type": "Text",
           "config": {
@@ -47,6 +31,30 @@
           "config": {
             "label": "Slogan",
             "placeholder": ""
+          }
+        },
+        "image_1": {
+          "type": "Image",
+          "config": {
+            "label": "Image 1",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image_2": {
+          "type": "Image",
+          "config": {
+            "label": "Image 2",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "image_3": {
+          "type": "Image",
+          "config": {
+            "label": "Image 3",
+            "constraint": {},
+            "thumbnails": []
           }
         }
       },

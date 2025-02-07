@@ -139,26 +139,6 @@ export type AllDocumentTypes = NavigationDocument | PageDocument;
  */
 export interface HeaderSliceDefaultPrimary {
 	/**
-	 * Background field in *Header → Default → Primary*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: header.default.primary.background
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	background: prismic.ImageField<never>;
-
-	/**
-	 * Portrait field in *Header → Default → Primary*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: header.default.primary.portrait
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	portrait: prismic.ImageField<never>;
-
-	/**
 	 * Titre field in *Header → Default → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -187,6 +167,36 @@ export interface HeaderSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	slogan: prismic.KeyTextField;
+
+	/**
+	 * Image 1 field in *Header → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: header.default.primary.image_1
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image_1: prismic.ImageField<never>;
+
+	/**
+	 * Image 2 field in *Header → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: header.default.primary.image_2
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image_2: prismic.ImageField<never>;
+
+	/**
+	 * Image 3 field in *Header → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: header.default.primary.image_3
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image_3: prismic.ImageField<never>;
 }
 
 /**
