@@ -7,7 +7,7 @@
 </script>
 
 <section
-	class="w-full h-[550px] pt-36 relative flex items-center justify-center bg-black text-white"
+	class="w-full h-[500px] mt-20 relative flex items-center justify-center bg-black text-white"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
