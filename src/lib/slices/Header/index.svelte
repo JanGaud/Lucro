@@ -57,7 +57,7 @@
 		class="z-10 text-center space-y-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
 		 px-4 sm:px-8 md:px-12 lg:px-16 w-full max-w-screen-lg pointer-events-none"
 	>
-		<h1 class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-wider shadow-lg">{slice.primary.titre}</h1>
+		<h1 class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-wider shadow-lg opacity-80">{slice.primary.titre}</h1>
 		<h2 class="text-4xl md:text-5xl lg:text-7xl tracking-wide shadow-lg">{slice.primary.sous_titre}</h2>
 		<p class="text-xl lg:text-2xl">{slice.primary.slogan}</p>
 		<div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 pt-8 pointer-events-auto">
