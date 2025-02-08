@@ -197,6 +197,16 @@ export interface HeaderSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
 	image_3: prismic.ImageField<never>;
+
+	/**
+	 * btn field in *Header → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: header.default.primary.btn
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	btn: prismic.Repeatable<prismic.LinkField<string, string, unknown, prismic.FieldState, never>>;
 }
 
 /**

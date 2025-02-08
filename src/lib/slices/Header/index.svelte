@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 	import { PrismicImage } from '@prismicio/svelte';
+	import { PrismicLink } from '@prismicio/svelte';
 
 	export let slice: Content.HeaderSlice;
 </script>
@@ -15,17 +16,26 @@
 		<div
 			class="relative overflow-hidden opacity-30 hover:opacity-75 transition-opacity duration-200"
 		>
-			<PrismicImage field={slice.primary.image_1} class="w-full h-full object-cover" />
+			<PrismicImage
+				field={slice.primary.image_1}
+				class="w-full h-full object-cover object-center"
+			/>
 		</div>
 		<div
 			class="relative overflow-hidden opacity-30 hover:opacity-75 transition-opacity duration-200"
 		>
-			<PrismicImage field={slice.primary.image_2} class="w-full h-full object-cover" />
+			<PrismicImage
+				field={slice.primary.image_2}
+				class="w-full h-full object-cover object-center"
+			/>
 		</div>
 		<div
 			class="relative overflow-hidden opacity-30 hover:opacity-75 transition-opacity duration-200"
 		>
-			<PrismicImage field={slice.primary.image_3} class="w-full h-full object-cover" />
+			<PrismicImage
+				field={slice.primary.image_3}
+				class="w-full h-full object-cover object-center"
+			/>
 		</div>
 	</div>
 
@@ -37,8 +47,12 @@
 		<h2 class="text-7xl shadow-lg">{slice.primary.sous_titre}</h2>
 		<p class="text-2xl">{slice.primary.slogan}</p>
 		<div class="flex items-center justify-center gap-12 pt-8 pointer-events-auto">
-			<button class="border-2 py-2 px-4 border-black bg-white text-black rounded-3xl uppercase">Mes oeuvres</button>
-			<button class="border-2 py-2 px-4 border-white bg-black rounded-3xl uppercase">Contactez-moi</button>
+			{#each slice.primary.btn as link (link.key)}
+				<PrismicLink
+					class="border-2 py-2 px-4 border-black bg-white text-black rounded-3xl uppercase"
+					field={link}
+				/>
+			{/each}
 		</div>
 	</div>
 </section>
