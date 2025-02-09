@@ -35,7 +35,7 @@
 		</div>
 
 		<!-- Image -->
-		<div class="relative w-full z-10 self-end bg-[#ffffff9c] backdrop-blur-lg">
+		<div class="relative w-full z-10 self-end bg-[#ffffffa7] backdrop-blur">
 			<PrismicImage field={slice.primary.portrait} class="w-full h-auto" />
 		</div>
 	</div>
