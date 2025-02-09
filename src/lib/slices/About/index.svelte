@@ -6,21 +6,21 @@
 </script>
 
 <section
-	class="grid grid-rows-2 lg:grid-cols-2 lg:grid-rows-1 items-center lg:gap-12 px-6 md:px-16 lg:px-38 lg:py-36"
+	class="grid grid-rows-2 lg:grid-cols-2 lg:grid-rows-1 items-center lg:gap-12 px-6 md:px-16 lg:px-38 py-20 lg:py-36 overflow-hidden"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
 	<!-- Text Content -->
-	<div>
+	<div class="text-center lg:text-left">
 		<hgroup class="space-y-4">
 			<h2 class="text-5xl md:text-6xl">{slice.primary.titre}</h2>
-			<h3 class="text-2xl md:text-4xl">{slice.primary.sous_titre}</h3>
+			<h3 class="text-3xl md:text-4xl">{slice.primary.sous_titre}</h3>
 		</hgroup>
 		<p class="pt-8 text-lg">{slice.primary.description}</p>
 	</div>
 
 	<!-- Image Container (Aligned to Bottom) -->
-	<div class="relative w-full h-full flex items-end justify-center border-b border-gray-300 shadow">
+	<div class="relative w-full h-auto flex items-end justify-center border-b border-gray-300 shadow">
 		<!-- Background Color Blobs -->
 		<div class="absolute inset-0 flex justify-center items-center -z-10">
 			<div
@@ -35,7 +35,7 @@
 		</div>
 
 		<!-- Image -->
-		<div class="relative w-full z-10 self-end">
+		<div class="relative w-full z-10 self-end bg-[#ffffff9c] backdrop-blur-lg">
 			<PrismicImage field={slice.primary.portrait} class="w-full h-auto" />
 		</div>
 	</div>
