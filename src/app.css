@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Literata&family=Rouge+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Liter&display=swap');
 
 @import "tailwindcss";
 
 html {
-    font-family: "Literata", serif;
+    font-family: "Literata", sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Rouge Script", cursive;
+    font-family: "Dancing Script", cursive;
 }
