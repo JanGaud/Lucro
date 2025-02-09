@@ -25,6 +25,13 @@
 
 		return () => clearInterval(interval);
 	});
+
+	// Function to get button styles
+	function getButtonClass(index: number) {
+		return index === 1 
+			? "btn-effect border-2 border-white bg-[#000000cf] backdrop-blur-lg text-white"
+			: "btn-effect border-2 border-black bg-[#ffffffcf] backdrop-blur-lg text-black";
+	}
 </script>
 
 <section
@@ -60,13 +67,66 @@
 		<h1 class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-wider shadow-lg opacity-80">{slice.primary.titre}</h1>
 		<h2 class="text-4xl md:text-5xl lg:text-7xl tracking-wide shadow-lg">{slice.primary.sous_titre}</h2>
 		<p class="text-xl lg:text-2xl">{slice.primary.slogan}</p>
+
+		<!-- Buttons with Hover Effect -->
 		<div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 pt-8 pointer-events-auto">
-			{#each slice.primary.btn as link (link.key)}
-				<PrismicLink
-					class="border-2 py-2 px-4 shadow-lg border-black bg-white text-black rounded-3xl uppercase font-semibold"
-					field={link}
-				/>
+			{#each slice.primary.btn as link, i (link.key)}
+				<PrismicLink field={link}>
+					<button class={getButtonClass(i)}>
+						<span>{link.text || 'Click Me'}</span>
+					</button>
+				</PrismicLink>
 			{/each}
 		</div>
 	</div>
 </section>
+
+<style>
+	/* Button Base */
+	.btn-effect {
+		position: relative;
+		outline: none;
+		border-radius: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		text-transform: uppercase;
+		height: 60px;
+		width: 210px;
+		font-weight: 500;
+		letter-spacing: 0.7px;
+		transition: all 0.3s ease-in-out;
+	}
+
+	.btn-effect span {
+		font-size: 14px;
+		transition: transform 0.3s ease-in-out;
+	}
+
+	/* Hover Animation */
+	.btn-effect:hover {
+		animation: rotate 0.7s ease-in-out both;
+	}
+
+	.btn-effect:hover span {
+		animation: storm 0.7s ease-in-out both;
+		animation-delay: 0.06s;
+	}
+
+	@keyframes rotate {
+		0% { transform: rotate(0deg); }
+		25% { transform: rotate(3deg); }
+		50% { transform: rotate(-3deg); }
+		75% { transform: rotate(1deg); }
+		100% { transform: rotate(0deg); }
+	}
+
+	@keyframes storm {
+		0% { transform: translateX(0); }
+		25% { transform: translateX(4px); }
+		50% { transform: translateX(-3px); }
+		75% { transform: translateX(2px); }
+		100% { transform: translateX(0); }
+	}
+</style>
