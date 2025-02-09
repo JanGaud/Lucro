@@ -1,9 +1,71 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
+	import { PrismicImage } from '@prismicio/svelte';
 
 	export let slice: Content.AboutSlice;
 </script>
 
-<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-	Placeholder component for {slice.slice_type} (variation: {slice.variation}) Slices
+<section
+	class="grid grid-rows-2 lg:grid-cols-2 lg:grid-rows-1 items-center lg:gap-12 px-6 md:px-16 lg:px-38 lg:py-36"
+	data-slice-type={slice.slice_type}
+	data-slice-variation={slice.variation}
+>
+	<!-- Text Content -->
+	<div>
+		<hgroup class="space-y-4">
+			<h2 class="text-5xl md:text-6xl">{slice.primary.titre}</h2>
+			<h3 class="text-2xl md:text-4xl">{slice.primary.sous_titre}</h3>
+		</hgroup>
+		<p class="pt-8 text-lg">{slice.primary.description}</p>
+	</div>
+
+	<!-- Image Container (Aligned to Bottom) -->
+	<div class="relative w-full h-full flex items-end justify-center border-b border-gray-300 shadow">
+		<!-- Background Color Blobs -->
+		<div class="absolute inset-0 flex justify-center items-center -z-10">
+			<div
+				class="absolute -top-10 -left-16 w-56 h-56 rounded-full bg-pink-400 filter blur-3xl opacity-80 mix-blend-multiply shape"
+			></div>
+			<div
+				class="absolute -top-16 -right-12 w-56 h-56 rounded-full bg-yellow-400 filter blur-3xl opacity-80 mix-blend-multiply shape animation-delay-2000"
+			></div>
+			<div
+				class="absolute -bottom-5 left-1/2 transform -translate-x-1/2 w-56 h-56 rounded-full bg-violet-400 filter blur-3xl opacity-80 mix-blend-multiply shape animation-delay-4000"
+			></div>
+		</div>
+
+		<!-- Image -->
+		<div class="relative w-full z-10 self-end">
+			<PrismicImage field={slice.primary.portrait} class="w-full h-auto" />
+		</div>
+	</div>
 </section>
+
+<style>
+	.shape {
+		animation: blob 10s infinite linear;
+		position: absolute;
+		will-change: transform;
+	}
+	@keyframes blob {
+		0%,
+		100% {
+			transform: translate(0, 0) scale(1);
+		}
+		25% {
+			transform: translate(30px, -50px) scale(1.1);
+		}
+		50% {
+			transform: translate(-30px, 40px) scale(1.05);
+		}
+		75% {
+			transform: translate(20px, -20px) scale(0.95);
+		}
+	}
+	.animation-delay-2000 {
+		animation-delay: -2s;
+	}
+	.animation-delay-4000 {
+		animation-delay: -4s;
+	}
+</style>

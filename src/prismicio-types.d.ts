@@ -159,6 +159,16 @@ export interface AboutSliceDefaultPrimary {
 	titre: prismic.KeyTextField;
 
 	/**
+	 * Sous-titre field in *About → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: about.default.primary.sous_titre
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	sous_titre: prismic.KeyTextField;
+
+	/**
 	 * Description field in *About → Default → Primary*
 	 *
 	 * - **Field Type**: Text

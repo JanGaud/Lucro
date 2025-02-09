@@ -27,6 +27,13 @@
             "placeholder": ""
           }
         },
+        "sous_titre": {
+          "type": "Text",
+          "config": {
+            "label": "Sous-titre",
+            "placeholder": ""
+          }
+        },
         "description": {
           "type": "Text",
           "config": {
