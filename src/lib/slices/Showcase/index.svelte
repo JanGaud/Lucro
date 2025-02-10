@@ -25,7 +25,7 @@
 	<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-6">
 		{#each oeuvres as oeuvre}
 			<div
-				class="relative group overflow-hidden aspect-square shadow-md flex items-center justify-center"
+				class="relative group overflow-hidden h-60 lg:h-full lg:aspect-square shadow-md flex items-center justify-center"
 			>
 				<PrismicImage
 					field={oeuvre.data.image}
@@ -36,9 +36,9 @@
 				<div
 					class="absolute text-center inset-0 bg-[#000000b7] backdrop-blur-md bg-opacity-70 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-4"
 				>
-					<h3 class="text-2xl tracking-wider font-semibold pb-2">{oeuvre.data.titre}</h3>
-					<p class="text-lg">{oeuvre.data.dimensions}</p>
-					<p class="text-md">{oeuvre.data.type?.uid}</p>
+					<h3 class="text-lg md:text-2xl tracking-wider font-semibold pb-2">{oeuvre.data.titre}</h3>
+					<p class="text-md md:text-lg">{oeuvre.data.dimensions}</p>
+					<p class="text-sm md:text-md">{oeuvre.data.type?.uid}</p>
 
 					{#if oeuvre.data.vendue}
 						<span
