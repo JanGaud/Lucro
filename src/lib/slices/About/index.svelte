@@ -6,7 +6,7 @@
 </script>
 
 <section
-	class="flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-1 items-center gap-8 lg:gap-12 px-6 md:px-16 lg:px-38 py-20 lg:py-36 overflow-hidden"
+	class="flex flex-col lg:grid lg:grid-cols-2 lg:grid-rows-1 items-center gap-8 lg:gap-12 px-6 md:px-16 lg:px-38 py-20 lg:py-36 overflow-x-hidden"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >

@@ -4,8 +4,6 @@
 	import { repositoryName } from '$lib/prismicio';
 	import "../app.css";
 	import Navigation from '$lib/components/Navigation.svelte';
-
-	console.log($page);
 </script>
 
 <svelte:head>
@@ -28,7 +26,7 @@
 </svelte:head>
 
 <Navigation />
-<main class="">
+<main class="max-w-screen-2xl mx-auto">
 	<slot />
 </main>
 <PrismicPreview {repositoryName} />
