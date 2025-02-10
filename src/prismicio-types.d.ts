@@ -57,6 +57,59 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 	Lang
 >;
 
+/**
+ * Content for oeuvres documents
+ */
+interface OeuvresDocumentData {
+	/**
+	 * Image field in *oeuvres*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: oeuvres.image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Titre field in *oeuvres*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: oeuvres.titre
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	titre: prismic.KeyTextField;
+
+	/**
+	 * Dimensions field in *oeuvres*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: oeuvres.dimensions
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	dimensions: prismic.KeyTextField;
+}
+
+/**
+ * oeuvres document from Prismic
+ *
+ * - **API ID**: `oeuvres`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type OeuvresDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<OeuvresDocumentData>,
+	'oeuvres',
+	Lang
+>;
+
 type PageDocumentDataSlicesSlice = AboutSlice | HeaderSlice | RichTextSlice;
 
 /**
@@ -132,7 +185,7 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
-export type AllDocumentTypes = NavigationDocument | PageDocument;
+export type AllDocumentTypes = NavigationDocument | OeuvresDocument | PageDocument;
 
 /**
  * Primary content in *About → Default → Primary*
@@ -309,6 +362,33 @@ type HeaderSliceVariation = HeaderSliceDefault;
 export type HeaderSlice = prismic.SharedSlice<'header', HeaderSliceVariation>;
 
 /**
+ * Default variation for LatestArt Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LatestArtSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *LatestArt*
+ */
+type LatestArtSliceVariation = LatestArtSliceDefault;
+
+/**
+ * LatestArt Shared Slice
+ *
+ * - **API ID**: `latest_art`
+ * - **Description**: LatestArt
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LatestArtSlice = prismic.SharedSlice<'latest_art', LatestArtSliceVariation>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -373,6 +453,8 @@ declare module '@prismicio/client' {
 		export type {
 			NavigationDocument,
 			NavigationDocumentData,
+			OeuvresDocument,
+			OeuvresDocumentData,
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
@@ -385,6 +467,9 @@ declare module '@prismicio/client' {
 			HeaderSliceDefaultPrimary,
 			HeaderSliceVariation,
 			HeaderSliceDefault,
+			LatestArtSlice,
+			LatestArtSliceVariation,
+			LatestArtSliceDefault,
 			RichTextSlice,
 			RichTextSliceDefaultPrimary,
 			RichTextSliceVariation,
