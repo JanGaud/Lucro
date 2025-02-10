@@ -1,0 +1,61 @@
+{
+  "id": "showcase",
+  "type": "SharedSlice",
+  "name": "Showcase",
+  "description": "Showcase",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "titre": {
+          "type": "Text",
+          "config": {
+            "label": "Titre",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "description",
+            "placeholder": ""
+          }
+        },
+        "more": {
+          "type": "Link",
+          "config": {
+            "label": "More",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "selection": {
+          "type": "Group",
+          "config": {
+            "label": "Oeuvre",
+            "repeat": true,
+            "fields": {
+              "selection": {
+                "type": "Link",
+                "config": {
+                  "label": "Selection",
+                  "select": "document",
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

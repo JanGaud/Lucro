@@ -33,6 +33,24 @@
 					"label": "Dimensions",
 					"placeholder": ""
 				}
+			},
+			"type": {
+				"type": "Link",
+				"config": {
+					"label": "Type",
+					"select": "document",
+					"repeat": false,
+					"customtypes": ["oeuvres_type"]
+				}
+			},
+			"vendue": {
+				"type": "Boolean",
+				"config": {
+					"label": "Vendue",
+					"placeholder_false": "false",
+					"placeholder_true": "true",
+					"default_value": false
+				}
 			}
 		}
 	}

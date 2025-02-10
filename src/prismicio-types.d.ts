@@ -93,6 +93,29 @@ interface OeuvresDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	dimensions: prismic.KeyTextField;
+
+	/**
+	 * Type field in *oeuvres*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: oeuvres.type
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	type: prismic.ContentRelationshipField<'oeuvres_type'>;
+
+	/**
+	 * Vendue field in *oeuvres*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: oeuvres.vendue
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	vendue: prismic.BooleanField;
 }
 
 /**
@@ -110,7 +133,49 @@ export type OeuvresDocument<Lang extends string = string> = prismic.PrismicDocum
 	Lang
 >;
 
-type PageDocumentDataSlicesSlice = AboutSlice | HeaderSlice | RichTextSlice;
+/**
+ * Content for oeuvres Type documents
+ */
+interface OeuvresTypeDocumentData {
+	/**
+	 * titre field in *oeuvres Type*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: oeuvres_type.titre
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	titre: prismic.KeyTextField;
+
+	/**
+	 * Description field in *oeuvres Type*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: oeuvres_type.description
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	description: prismic.KeyTextField;
+}
+
+/**
+ * oeuvres Type document from Prismic
+ *
+ * - **API ID**: `oeuvres_type`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type OeuvresTypeDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<OeuvresTypeDocumentData>,
+	'oeuvres_type',
+	Lang
+>;
+
+type PageDocumentDataSlicesSlice = ShowcaseSlice | AboutSlice | HeaderSlice | RichTextSlice;
 
 /**
  * Content for Page documents
@@ -185,7 +250,11 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
-export type AllDocumentTypes = NavigationDocument | OeuvresDocument | PageDocument;
+export type AllDocumentTypes =
+	| NavigationDocument
+	| OeuvresDocument
+	| OeuvresTypeDocument
+	| PageDocument;
 
 /**
  * Primary content in *About → Default → Primary*
@@ -362,33 +431,6 @@ type HeaderSliceVariation = HeaderSliceDefault;
 export type HeaderSlice = prismic.SharedSlice<'header', HeaderSliceVariation>;
 
 /**
- * Default variation for LatestArt Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type LatestArtSliceDefault = prismic.SharedSliceVariation<
-	'default',
-	Record<string, never>,
-	never
->;
-
-/**
- * Slice variation for *LatestArt*
- */
-type LatestArtSliceVariation = LatestArtSliceDefault;
-
-/**
- * LatestArt Shared Slice
- *
- * - **API ID**: `latest_art`
- * - **Description**: LatestArt
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type LatestArtSlice = prismic.SharedSlice<'latest_art', LatestArtSliceVariation>;
-
-/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -430,6 +472,93 @@ type RichTextSliceVariation = RichTextSliceDefault;
  */
 export type RichTextSlice = prismic.SharedSlice<'rich_text', RichTextSliceVariation>;
 
+/**
+ * Item in *Showcase → Default → Primary → Oeuvre*
+ */
+export interface ShowcaseSliceDefaultPrimarySelectionItem {
+	/**
+	 * Selection field in *Showcase → Default → Primary → Oeuvre*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: showcase.default.primary.selection[].selection
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	selection: prismic.ContentRelationshipField;
+}
+
+/**
+ * Primary content in *Showcase → Default → Primary*
+ */
+export interface ShowcaseSliceDefaultPrimary {
+	/**
+	 * Titre field in *Showcase → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: showcase.default.primary.titre
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	titre: prismic.KeyTextField;
+
+	/**
+	 * description field in *Showcase → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: showcase.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	description: prismic.KeyTextField;
+
+	/**
+	 * More field in *Showcase → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: showcase.default.primary.more
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	more: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+	/**
+	 * Oeuvre field in *Showcase → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: showcase.default.primary.selection[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	selection: prismic.GroupField<Simplify<ShowcaseSliceDefaultPrimarySelectionItem>>;
+}
+
+/**
+ * Default variation for Showcase Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ShowcaseSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ShowcaseSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Showcase*
+ */
+type ShowcaseSliceVariation = ShowcaseSliceDefault;
+
+/**
+ * Showcase Shared Slice
+ *
+ * - **API ID**: `showcase`
+ * - **Description**: Showcase
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ShowcaseSlice = prismic.SharedSlice<'showcase', ShowcaseSliceVariation>;
+
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -455,6 +584,8 @@ declare module '@prismicio/client' {
 			NavigationDocumentData,
 			OeuvresDocument,
 			OeuvresDocumentData,
+			OeuvresTypeDocument,
+			OeuvresTypeDocumentData,
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
@@ -467,13 +598,15 @@ declare module '@prismicio/client' {
 			HeaderSliceDefaultPrimary,
 			HeaderSliceVariation,
 			HeaderSliceDefault,
-			LatestArtSlice,
-			LatestArtSliceVariation,
-			LatestArtSliceDefault,
 			RichTextSlice,
 			RichTextSliceDefaultPrimary,
 			RichTextSliceVariation,
-			RichTextSliceDefault
+			RichTextSliceDefault,
+			ShowcaseSlice,
+			ShowcaseSliceDefaultPrimarySelectionItem,
+			ShowcaseSliceDefaultPrimary,
+			ShowcaseSliceVariation,
+			ShowcaseSliceDefault
 		};
 	}
 }

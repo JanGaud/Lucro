@@ -2,12 +2,12 @@
 
 import About from './About/index.svelte';
 import Header from './Header/index.svelte';
-import LatestArt from './LatestArt/index.svelte';
 import RichText from './RichText/index.svelte';
+import Showcase from './Showcase/index.svelte';
 
 export const components = {
 	about: About,
 	header: Header,
-	latest_art: LatestArt,
-	rich_text: RichText
+	rich_text: RichText,
+	showcase: Showcase
 };
