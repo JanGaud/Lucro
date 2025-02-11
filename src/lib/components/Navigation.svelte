@@ -3,7 +3,7 @@
 	import { PrismicImage, PrismicLink } from '@prismicio/svelte';
 	import { writable } from 'svelte/store';
 
-	export let navData: { logo?: any; lien?: { url: string; label: string }[] } = {};
+	export let navData: { logo?: any; lien?: { link_type: "Web"; url: string; label: string }[] } = {};
 	let isOpen = writable(false); // Mobile menu toggle state
 
 	function toggleMenu() {
@@ -26,8 +26,8 @@
 
 	<!-- Desktop Navigation -->
 	<div class="hidden h-full lg:flex items-center space-x-6 text-md font-bold tracking-wider">
-		{#if navData.lien.length > 0}
-			{#each navData.lien as lien}
+		{#if (navData.lien ?? []).length > 0}
+			{#each (navData.lien ?? []) as lien}
 				<PrismicLink
 					field={lien}
 					class="relative h-full flex items-center text-black hover:text-pink-400 transition-colors duration-200 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-pink-400 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100"
@@ -77,7 +77,7 @@
 	</button>
 
 	<!-- Mobile Navigation Links -->
-	{#each navData.lien as lien}
+	{#each (navData.lien ?? []) as lien}
 		<PrismicLink
 			field={lien}
 			class="block text-black active:text-pink-400 transition-colors duration-200 uppercase"
