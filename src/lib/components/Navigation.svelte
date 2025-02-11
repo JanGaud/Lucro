@@ -26,16 +26,21 @@
 
 	<!-- Desktop Navigation -->
 	<div class="hidden h-full lg:flex items-center space-x-6 text-md font-bold tracking-wider">
-		{#each navData.lien as lien}
-			<PrismicLink
-				field={lien}
-				class="relative h-full flex items-center text-black hover:text-pink-400 transition-colors duration-200 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-pink-400 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100"
-			/>
-		{/each}
+		{#if navData.lien.length > 0}
+			{#each navData.lien as lien}
+				<PrismicLink
+					field={lien}
+					class="relative h-full flex items-center text-black hover:text-pink-400 transition-colors duration-200 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-pink-400 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100"
+				/>
+			{/each}
+		{/if}
 	</div>
 
 	<!-- Mobile Hamburger Button -->
-	<button class="lg:hidden focus:outline-none active:text-pink-400 transition-colors duration-200" on:click={toggleMenu}>
+	<button
+		class="lg:hidden focus:outline-none active:text-pink-400 transition-colors duration-200"
+		on:click={toggleMenu}
+	>
 		<svg
 			class="w-8 h-8"
 			fill="none"
@@ -55,7 +60,10 @@
 	class:translate-x-full={!$isOpen}
 >
 	<!-- Close Button -->
-	<button class="self-end text-black focus:outline-none active:text-pink-400 transition-colors duration-200" on:click={closeMenu}>
+	<button
+		class="self-end text-black focus:outline-none active:text-pink-400 transition-colors duration-200"
+		on:click={closeMenu}
+	>
 		<svg
 			class="w-8 h-8"
 			fill="none"
