@@ -5,6 +5,50 @@ import type * as prismic from '@prismicio/client';
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
+ * Content for footer documents
+ */
+interface FooterDocumentData {
+	/**
+	 * Logo field in *footer*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: footer.logo
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	logo: prismic.ImageField<never>;
+
+	/**
+	 * Policy Links field in *footer*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: footer.policy_links
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	policy_links: prismic.Repeatable<
+		prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+	>;
+}
+
+/**
+ * footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+	Simplify<FooterDocumentData>,
+	'footer',
+	Lang
+>;
+
+/**
  * Content for navigation documents
  */
 interface NavigationDocumentData {
@@ -175,7 +219,12 @@ export type OeuvresTypeDocument<Lang extends string = string> = prismic.PrismicD
 	Lang
 >;
 
-type PageDocumentDataSlicesSlice = ShowcaseSlice | AboutSlice | HeaderSlice | RichTextSlice;
+type PageDocumentDataSlicesSlice =
+	| GallerySlice
+	| ShowcaseSlice
+	| AboutSlice
+	| HeaderSlice
+	| RichTextSlice;
 
 /**
  * Content for Page documents
@@ -251,6 +300,7 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 >;
 
 export type AllDocumentTypes =
+	| FooterDocument
 	| NavigationDocument
 	| OeuvresDocument
 	| OeuvresTypeDocument
@@ -327,6 +377,33 @@ type AboutSliceVariation = AboutSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type AboutSlice = prismic.SharedSlice<'about', AboutSliceVariation>;
+
+/**
+ * Default variation for Gallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerySliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Gallery*
+ */
+type GallerySliceVariation = GallerySliceDefault;
+
+/**
+ * Gallery Shared Slice
+ *
+ * - **API ID**: `gallery`
+ * - **Description**: Gallery
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerySlice = prismic.SharedSlice<'gallery', GallerySliceVariation>;
 
 /**
  * Primary content in *Header → Default → Primary*
@@ -580,6 +657,8 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			FooterDocument,
+			FooterDocumentData,
 			NavigationDocument,
 			NavigationDocumentData,
 			OeuvresDocument,
@@ -594,6 +673,9 @@ declare module '@prismicio/client' {
 			AboutSliceDefaultPrimary,
 			AboutSliceVariation,
 			AboutSliceDefault,
+			GallerySlice,
+			GallerySliceVariation,
+			GallerySliceDefault,
 			HeaderSlice,
 			HeaderSliceDefaultPrimary,
 			HeaderSliceVariation,

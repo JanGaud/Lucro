@@ -1,0 +1,30 @@
+{
+	"format": "custom",
+	"id": "footer",
+	"label": "footer",
+	"repeatable": false,
+	"status": true,
+	"json": {
+		"Main": {
+			"logo": {
+				"type": "Image",
+				"config": {
+					"label": "Logo",
+					"constraint": {},
+					"thumbnails": []
+				}
+			},
+			"policy_links": {
+				"type": "Link",
+				"config": {
+					"label": "Policy Links",
+					"placeholder": "",
+					"select": null,
+					"allowTargetBlank": true,
+					"allowText": true,
+					"repeat": true
+				}
+			}
+		}
+	}
+}
