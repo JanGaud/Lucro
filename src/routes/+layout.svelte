@@ -4,6 +4,8 @@
 	import { repositoryName } from '$lib/prismicio';
 	import "../app.css";
 	import Navigation from '$lib/components/Navigation.svelte';
+
+	$: navData = $page?.data?.nav?.data ?? {};
 </script>
 
 <svelte:head>
@@ -25,7 +27,7 @@
 	{/if}
 </svelte:head>
 
-<Navigation navData={$page.data.nav.data} />
+<Navigation {navData} />
 <main class="max-w-screen-2xl mx-auto">
 	<slot />
 </main>
