@@ -25,7 +25,7 @@
 	{/if}
 </svelte:head>
 
-<Navigation />
+<Navigation navData={$page.data.nav.data} />
 <main class="max-w-screen-2xl mx-auto">
 	<slot />
 </main>

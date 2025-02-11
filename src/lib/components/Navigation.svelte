@@ -3,7 +3,7 @@
 	import { PrismicImage, PrismicLink } from '@prismicio/svelte';
 	import { writable } from 'svelte/store';
 
-	const navData = $page.data.nav.data;
+	export let navData;
 	let isOpen = writable(false); // Mobile menu toggle state
 
 	function toggleMenu() {
