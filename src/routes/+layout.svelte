@@ -5,7 +5,7 @@
 	import "../app.css";
 	import Navigation from '$lib/components/Navigation.svelte';
 
-	$: navData = $page?.data?.nav?.data ?? {};
+	const navData = $page?.data?.nav?.data;
 </script>
 
 <svelte:head>
