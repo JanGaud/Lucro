@@ -53,7 +53,7 @@
 		{#each images as image, i (image.id)}
 			<PrismicImage
 				field={image}
-				class="w-full h-full object-cover object-center absolute transition-opacity duration-700 opacity-30"
+				class="w-full h-full object-cover object-center absolute transition-opacity duration-700"
 				style="opacity: {i === $activeIndex ? 0.45 : 0};"
 			/>
 		{/each}
