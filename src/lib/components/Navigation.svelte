@@ -35,7 +35,10 @@
 	</div>
 
 	<!-- Mobile Hamburger Button -->
-	<button class="lg:hidden focus:outline-none active:text-pink-400 transition-colors duration-200" on:click={toggleMenu}>
+	<button
+		class="lg:hidden focus:outline-none active:text-pink-400 transition-colors duration-200"
+		on:click={toggleMenu}
+	>
 		<svg
 			class="w-8 h-8"
 			fill="none"
@@ -55,7 +58,10 @@
 	class:translate-x-full={!$isOpen}
 >
 	<!-- Close Button -->
-	<button class="self-end text-black focus:outline-none active:text-pink-400 transition-colors duration-200" on:click={closeMenu}>
+	<button
+		class="self-end text-black focus:outline-none active:text-pink-400 transition-colors duration-200"
+		on:click={closeMenu}
+	>
 		<svg
 			class="w-8 h-8"
 			fill="none"
@@ -71,6 +77,7 @@
 	<!-- Mobile Navigation Links -->
 	{#each navData.lien as lien}
 		<PrismicLink
+			on:click={toggleMenu}
 			field={lien}
 			class="block text-black active:text-pink-400 transition-colors duration-200 uppercase"
 		/>
