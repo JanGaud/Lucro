@@ -4,8 +4,6 @@
 	import { repositoryName } from '$lib/prismicio';
 	import "../app.css";
 	import Navigation from '$lib/components/Navigation.svelte';
-
-	const navData = $page?.data?.nav?.data;
 </script>
 
 <svelte:head>
