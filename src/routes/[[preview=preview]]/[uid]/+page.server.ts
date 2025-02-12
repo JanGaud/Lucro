@@ -9,7 +9,6 @@ export async function load({ params, fetch, cookies, url }: {
 	url: URL;
 }) {
 	const client = createClient({ fetch, cookies });
-	const nav = await client.getSingle('navigation');
 
 	// ✅ Get the current page number from the query string safely
 	const currentPage = Number(url.searchParams.get('page')) || 1;
@@ -43,7 +42,6 @@ export async function load({ params, fetch, cookies, url }: {
 
 		return {
 			page,
-			nav,
 			oeuvres: oeuvresResponse.results ?? [],
 			totalPages: oeuvresResponse.total_pages ?? 1,
 			currentPage,
