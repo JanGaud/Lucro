@@ -6,6 +6,7 @@ export async function load({ fetch, cookies }: { fetch: (input: RequestInfo, ini
 
 	// Fetch the page and navigation
 	const page = await client.getByUID('page', 'accueil');
+	const nav = await client.getSingle('navigation');
 
 	// Extract œuvre IDs from the slice (assuming they are stored in a `selection` array)
 	const selectionSlice = page.data.slices.find((slice) => slice.slice_type === 'showcase');
@@ -13,7 +14,7 @@ export async function load({ fetch, cookies }: { fetch: (input: RequestInfo, ini
 	const oeuvreIDs = selectionSlice?.slice_type === 'showcase' ? selectionSlice.primary.selection.map((item) => item.selection.id) : [];
 
 	let oeuvres;
-	
+
 	if (oeuvreIDs.length > 0) {
 		// Fetch only the selected œuvres
 		const oeuvresQuery = await client.getByIDs(oeuvreIDs);
@@ -22,6 +23,7 @@ export async function load({ fetch, cookies }: { fetch: (input: RequestInfo, ini
 
 	return {
 		page,
+		nav,
 		oeuvres,
 		title: asText(page.data.title),
 		meta_description: page.data.meta_description,
