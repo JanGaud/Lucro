@@ -28,7 +28,7 @@
 </svelte:head>
 
 <Navigation />
-<main class="max-w-screen-2xl mx-auto">
+<main class="max-w-screen-2xl mx-auto overflow-hidden">
 	<slot />
 </main>
 <PrismicPreview {repositoryName} />
