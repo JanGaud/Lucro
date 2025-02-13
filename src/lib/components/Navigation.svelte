@@ -33,7 +33,6 @@
 			/>
 		{/each}
 	</div>
-
 	<!-- Mobile Hamburger Button -->
 	<button
 		class="lg:hidden focus:outline-none active:text-pink-400 transition-colors duration-200"
