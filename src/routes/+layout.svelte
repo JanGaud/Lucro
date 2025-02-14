@@ -4,6 +4,7 @@
 	import { repositoryName } from '$lib/prismicio';
 	import "../app.css";
 	import Navigation from '$lib/components/Navigation.svelte';
+	import Lightbox from '$lib/components/Lightbox.svelte';
 </script>
 
 <svelte:head>
@@ -29,5 +30,6 @@
 
 <main class="max-w-screen-2xl mx-auto overflow-hidden">
 	<slot />
+	<Lightbox />
 </main>
 <PrismicPreview {repositoryName} />

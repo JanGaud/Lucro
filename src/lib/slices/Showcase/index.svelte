@@ -2,6 +2,7 @@
 	import type { Content } from '@prismicio/client';
 	import { page } from '$app/stores';
 	import { PrismicImage, PrismicLink } from '@prismicio/svelte';
+	import { openLightbox } from '$lib/stores/lightbox';
 	export let slice: Content.ShowcaseSlice;
 
 	let oeuvres = $page.data.oeuvres;
@@ -42,13 +43,28 @@
 	<!-- Bento Grid -->
 	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[200px] lg:auto-rows-[250px]">
 		{#each oeuvres as oeuvre}
-			<div class={`relative border overflow-hidden bg-black shadow-md ${getGridClass(oeuvre.data.image)}`}>
+			<!-- Clickable Image Container -->
+			<div
+				class={`relative border overflow-hidden bg-black shadow-md cursor-pointer ${getGridClass(oeuvre.data.image)}`}
+				role="button"
+				tabindex="0"
+				aria-label="Afficher l’image en plein écran"
+				on:click={() => openLightbox(oeuvre.data.image)}
+				on:keydown={(event) => (event.key === 'Enter' || event.key === ' ') && openLightbox(oeuvre.data.image)}
+			>
 				<!-- Image -->
-				<PrismicImage field={oeuvre.data.image} class="w-full h-auto md:h-full object-cover" />
+				<PrismicImage
+					field={oeuvre.data.image}
+					class="w-full h-auto md:h-full object-cover transition-transform duration-300 hover:scale-105"
+				/>
 
 				<!-- Gradient Overlay -->
-				<div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent text-white p-4 transition-opacity duration-300 opacity-100 hover:opacity-0 flex flex-col justify-end">
-					<h3 class="text-lg lg:text-2xl tracking-wider font-bold drop-shadow-md">{oeuvre.data.titre}</h3>
+				<div
+					class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent text-white p-4 transition-opacity duration-300 opacity-100 hover:opacity-0 flex flex-col justify-end"
+				>
+					<h3 class="text-lg lg:text-2xl tracking-wider font-bold drop-shadow-md">
+						{oeuvre.data.titre}
+					</h3>
 					<p class="text-sm drop-shadow-md">{oeuvre.data.dimensions}</p>
 					<p class="text-md mt-1 drop-shadow-md">{oeuvre.data.type?.uid}</p>
 

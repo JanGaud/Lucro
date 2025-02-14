@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { PrismicImage } from '@prismicio/svelte';
+	import { openLightbox } from '$lib/stores/lightbox';
 
 	// Ensure page data is correctly initialized
 	$: pageData = $page?.data ?? {};
@@ -39,7 +40,13 @@
 			{#each oeuvres as oeuvre}
 				<!-- Image Container with Adaptive Grid Span -->
 				<div
-					class={`relative border overflow-hidden bg-black shadow-md min-h-40 ${getGridClass(oeuvre.data.image)}`}
+					class={`relative border overflow-hidden bg-black shadow-md cursor-pointer ${getGridClass(oeuvre.data.image)}`}
+					role="button"
+					tabindex="0"
+					aria-label="Afficher l’image en plein écran"
+					on:click={() => openLightbox(oeuvre.data.image)}
+					on:keydown={(event) =>
+						(event.key === 'Enter' || event.key === ' ') && openLightbox(oeuvre.data.image)}
 				>
 					<!-- Image -->
 					<PrismicImage
@@ -47,7 +54,7 @@
 						class="w-full h-auto md:h-full object-cover transition-transform duration-300 hover:scale-105"
 					/>
 
-					<!-- Gradient Overlay (Hidden on Hover) -->
+					<!-- Gradient Overlay (Now Clickable) -->
 					<div
 						class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent text-white p-4 flex flex-col justify-end transition-opacity duration-300 opacity-100 hover:opacity-0"
 					>
@@ -56,7 +63,7 @@
 						</h2>
 						<p class="text-sm drop-shadow-md">{oeuvre.data.dimensions}</p>
 						<p class="text-md mt-1 drop-shadow-md">{oeuvre.data.type?.uid}</p>
-						<!-- "Vendue" Pill (Only if Sold) -->
+
 						{#if oeuvre.data.vendue}
 							<span
 								class="mt-2 inline-block px-3 py-1 w-fit text-xs font-semibold text-white bg-red-500 rounded-full"
