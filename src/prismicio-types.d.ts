@@ -220,6 +220,7 @@ export type OeuvresTypeDocument<Lang extends string = string> = prismic.PrismicD
 >;
 
 type PageDocumentDataSlicesSlice =
+	| ContactSlice
 	| GallerySlice
 	| ShowcaseSlice
 	| AboutSlice
@@ -379,6 +380,73 @@ type AboutSliceVariation = AboutSliceDefault;
 export type AboutSlice = prismic.SharedSlice<'about', AboutSliceVariation>;
 
 /**
+ * Primary content in *Contact → Default → Primary*
+ */
+export interface ContactSliceDefaultPrimary {
+	/**
+	 * Titre field in *Contact → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.titre
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	titre: prismic.KeyTextField;
+
+	/**
+	 * Description field in *Contact → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	description: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Contact Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ContactSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Contact*
+ */
+type ContactSliceVariation = ContactSliceDefault;
+
+/**
+ * Contact Shared Slice
+ *
+ * - **API ID**: `contact`
+ * - **Description**: Contact
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSlice = prismic.SharedSlice<'contact', ContactSliceVariation>;
+
+/**
+ * Primary content in *Gallery → Default → Primary*
+ */
+export interface GallerySliceDefaultPrimary {
+	/**
+	 * Titre field in *Gallery → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gallery.default.primary.titre
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	titre: prismic.KeyTextField;
+}
+
+/**
  * Default variation for Gallery Slice
  *
  * - **API ID**: `default`
@@ -387,7 +455,7 @@ export type AboutSlice = prismic.SharedSlice<'about', AboutSliceVariation>;
  */
 export type GallerySliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<GallerySliceDefaultPrimary>,
 	never
 >;
 
@@ -673,7 +741,12 @@ declare module '@prismicio/client' {
 			AboutSliceDefaultPrimary,
 			AboutSliceVariation,
 			AboutSliceDefault,
+			ContactSlice,
+			ContactSliceDefaultPrimary,
+			ContactSliceVariation,
+			ContactSliceDefault,
 			GallerySlice,
+			GallerySliceDefaultPrimary,
 			GallerySliceVariation,
 			GallerySliceDefault,
 			HeaderSlice,

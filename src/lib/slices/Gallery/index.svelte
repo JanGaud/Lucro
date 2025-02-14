@@ -3,6 +3,10 @@
 	import { goto } from '$app/navigation';
 	import { PrismicImage } from '@prismicio/svelte';
 	import { openLightbox } from '$lib/stores/lightbox';
+	import type { Content } from '@prismicio/client';
+
+	
+	export let slice: Content.GallerySlice;
 
 	// Ensure page data is correctly initialized
 	$: pageData = $page?.data ?? {};
@@ -32,6 +36,7 @@
 </script>
 
 <section class="mt-10 px-6 md:px-16 lg:px-38 py-20 lg:py-36">
+	<h1 class="text-5xl md:text-6xl text-center mb-10">{slice.primary.titre}</h1>
 	<!-- Bento Grid -->
 	<div
 		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[200px] lg:auto-rows-[250px]"

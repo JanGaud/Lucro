@@ -1,8 +1,8 @@
 {
-  "id": "gallery",
+  "id": "contact",
   "type": "SharedSlice",
-  "name": "Gallery",
-  "description": "Gallery",
+  "name": "Contact",
+  "description": "Contact",
   "variations": [
     {
       "id": "default",
@@ -16,6 +16,13 @@
           "type": "Text",
           "config": {
             "label": "Titre",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Description",
             "placeholder": ""
           }
         }

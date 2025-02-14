@@ -5,7 +5,12 @@
 		"primary": {
 			"titre": {
 				"__TYPE__": "FieldContent",
-				"value": "near",
+				"value": "gather",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "FieldContent",
+				"value": "cookies",
 				"type": "Text"
 			}
 		},
