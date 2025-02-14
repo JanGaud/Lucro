@@ -27,11 +27,11 @@
         <!-- Lightbox Content (Auto-focus) -->
         <!-- svelte-ignore a11y-autofocus -->
         <div class="relative p-4 max-w-full max-h-full" autofocus>
-            <img src={selectedImage.url} alt="Artwork" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-lg" />
+            <img src={selectedImage.url} alt="Artwork" class="max-w-full max-h-[90vh] pointer-events-none object-contain rounded-lg shadow-lg" />
 
             <!-- Close Button (Now Properly Interactive) -->
             <button 
-                class="absolute top-2 right-2 text-white text-3xl focus:outline-none"
+                class="absolute top-0 right-0 text-white text-5xl focus:outline-none"
                 on:click={closeLightbox}
                 aria-label="Fermer la boîte de dialogue"
             >
