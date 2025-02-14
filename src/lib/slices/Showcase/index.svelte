@@ -5,6 +5,21 @@
 	export let slice: Content.ShowcaseSlice;
 
 	let oeuvres = $page.data.oeuvres;
+
+	// Function to determine grid span classes based on image aspect ratio
+	function getGridClass(image: { dimensions: { width: any; height: any } }) {
+		if (!image?.dimensions) return '';
+		const { width, height } = image.dimensions;
+		const aspectRatio = width / height;
+
+		if (aspectRatio > 1.5) {
+			return 'md:col-span-2 md:row-span-1';
+		} else if (aspectRatio < 0.7) {
+			return 'md:row-span-2 md:col-span-1';
+		} else {
+			return 'md:col-span-1 md:row-span-1';
+		}
+	}
 </script>
 
 <section
@@ -12,6 +27,7 @@
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
+	<!-- Title & Button Row -->
 	<div
 		class="w-full flex gap-4 flex-col justify-center items-center md:flex-row md:justify-between mb-14"
 	>
@@ -22,28 +38,22 @@
 			</button>
 		</PrismicLink>
 	</div>
-	<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-6">
-		{#each oeuvres as oeuvre}
-			<div
-				class="relative group overflow-hidden h-60 lg:h-full lg:aspect-square shadow-md flex items-center justify-center"
-			>
-				<PrismicImage
-					field={oeuvre.data.image}
-					class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-				/>
 
-				<!-- Black Overlay on Hover -->
-				<div
-					class="absolute text-center inset-0 bg-[#000000b7] backdrop-blur-md bg-opacity-70 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white p-4"
-				>
-					<h3 class="text-lg md:text-2xl tracking-wider font-semibold pb-2">{oeuvre.data.titre}</h3>
-					<p class="text-md md:text-lg">{oeuvre.data.dimensions}</p>
-					<p class="text-sm md:text-md">{oeuvre.data.type?.uid}</p>
+	<!-- Bento Grid -->
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[200px] lg:auto-rows-[250px]">
+		{#each oeuvres as oeuvre}
+			<div class={`relative border overflow-hidden bg-black shadow-md ${getGridClass(oeuvre.data.image)}`}>
+				<!-- Image -->
+				<PrismicImage field={oeuvre.data.image} class="w-full h-auto md:h-full object-cover" />
+
+				<!-- Gradient Overlay -->
+				<div class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent text-white p-4 transition-opacity duration-300 opacity-100 hover:opacity-0 flex flex-col justify-end">
+					<h3 class="text-lg lg:text-2xl tracking-wider font-bold drop-shadow-md">{oeuvre.data.titre}</h3>
+					<p class="text-sm drop-shadow-md">{oeuvre.data.dimensions}</p>
+					<p class="text-md mt-1 drop-shadow-md">{oeuvre.data.type?.uid}</p>
 
 					{#if oeuvre.data.vendue}
-						<span
-							class="mt-2 inline-block px-3 py-1 text-xs font-semibold text-white bg-red-500 rounded-full"
-						>
+						<span class="mt-2 inline-block w-fit px-3 py-1 text-xs font-semibold text-white bg-red-500 rounded-full">
 							Vendue
 						</span>
 					{/if}
