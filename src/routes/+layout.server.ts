@@ -7,6 +7,7 @@ export async function load({ fetch }: { fetch: (input: RequestInfo, init?: Reque
     const client = createClient({ fetch });
 
     let nav;
+    let footer;
 
     try {
         nav = await client.getSingle('navigation');
@@ -15,7 +16,15 @@ export async function load({ fetch }: { fetch: (input: RequestInfo, init?: Reque
         nav = null;
     }
 
+    try {
+        footer = await client.getSingle('footer');
+    } catch (error) {
+        console.error('Failed to fetch footer data from Prismic:', error);
+        footer = null;
+    }
+
     return {
         nav,
+        footer
     };
 }

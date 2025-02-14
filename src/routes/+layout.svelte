@@ -5,6 +5,7 @@
 	import "../app.css";
 	import Navigation from '$lib/components/Navigation.svelte';
 	import Lightbox from '$lib/components/Lightbox.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 </script>
 
 <svelte:head>
@@ -27,9 +28,9 @@
 </svelte:head>
 
 <Navigation />
-
 <main class="max-w-screen-2xl mx-auto overflow-hidden">
 	<slot />
 	<Lightbox />
 </main>
+<Footer />
 <PrismicPreview {repositoryName} />

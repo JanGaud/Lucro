@@ -31,6 +31,39 @@ interface FooterDocumentData {
 	policy_links: prismic.Repeatable<
 		prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 	>;
+
+	/**
+	 * Slogan field in *footer*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: footer.slogan
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	slogan: prismic.KeyTextField;
+
+	/**
+	 * Sous Slogan field in *footer*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: footer.sous_slogan
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	sous_slogan: prismic.KeyTextField;
+
+	/**
+	 * Btn field in *footer*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: footer.btn
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	btn: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**

@@ -29,7 +29,7 @@
 					id="prenom"
 					name="prenom"
 					placeholder="Prénom"
-					class="w-full p-2 border-2 border-black rounded-md shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400 !important"
+					class="w-full p-2 border-2 border-black  shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
 				/>
 			</div>
 			<div>
@@ -38,7 +38,7 @@
 					id="nom"
 					name="nom"
 					placeholder="Nom"
-					class="w-full p-2 border-2 border-black rounded-md shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400 !important"
+					class="w-full p-2 border-2 border-black  shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
 				/>
 			</div>
 			<div>
@@ -47,7 +47,7 @@
 					id="email"
 					name="email"
 					placeholder="Email"
-					class="w-full p-2 border-2 border-black rounded-md shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400 !important"
+					class="w-full p-2 border-2 border-black  shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
 				/>
 			</div>
 			<div>
@@ -56,7 +56,7 @@
 					id="telephone"
 					name="telephone"
 					placeholder="Téléphone"
-					class="w-full p-2 border-2 border-black rounded-md shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400 !important"
+					class="w-full p-2 border-2 border-black  shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
 				/>
 			</div>
 			<div class="col-span-2">
@@ -64,7 +64,7 @@
 					id="message"
 					name="message"
 					placeholder="Message"
-					class="w-full min-h-44 p-2 border-2 border-black rounded-md shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg resize-none outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400 !important"
+					class="w-full min-h-44 p-2 border-2 border-black  shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg resize-none outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
 				></textarea>
 			</div>
 		</div>
@@ -72,7 +72,7 @@
 			<button
 				type="submit"
 				class="btn-effect border-2 border-black bg-[#ffffffcf] backdrop-blur-lg text-black"
-				>Envoyer</button
+				><span>Envoyer</span></button
 			>
 		</div>
 	</form>

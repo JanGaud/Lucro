@@ -24,6 +24,31 @@
 					"allowText": true,
 					"repeat": true
 				}
+			},
+			"slogan": {
+				"type": "Text",
+				"config": {
+					"label": "Slogan",
+					"placeholder": ""
+				}
+			},
+			"sous_slogan": {
+				"type": "Text",
+				"config": {
+					"label": "Sous Slogan",
+					"placeholder": ""
+				}
+			},
+			"btn": {
+				"type": "Link",
+				"config": {
+					"label": "Btn",
+					"placeholder": "",
+					"select": null,
+					"allowTargetBlank": true,
+					"allowText": true,
+					"repeat": false
+				}
 			}
 		}
 	}
