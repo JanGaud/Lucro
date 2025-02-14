@@ -15,34 +15,35 @@
 	}
 
 	// Function to determine grid span classes based on image aspect ratio
-	function getGridClass(image: { dimensions: { width: any; height: any } }) {
-		if (!image?.dimensions) return ''; // Ensure dimensions exist
-		const { width, height } = image.dimensions;
-		const aspectRatio = width / height;
+function getGridClass(image: { dimensions: { width: any; height: any } }) {
+	if (!image?.dimensions) return ''; // Ensure dimensions exist
+	const { width, height } = image.dimensions;
+	const aspectRatio = width / height;
 
-		if (aspectRatio > 1.5) {
-			return 'col-span-2 row-span-1'; // Wide images span 2 columns
-		} else if (aspectRatio < 0.7) {
-			return 'row-span-2 col-span-1'; // Tall images span 2 rows
-		} else {
-			return 'col-span-1 row-span-1'; // Square images stay default
-		}
+	if (aspectRatio > 1.5) {
+		return 'md:col-span-2 md:row-span-1'; // Wide images span 2 columns only on md+
+	} else if (aspectRatio < 0.7) {
+		return 'md:row-span-2 md:col-span-1'; // Tall images span 2 rows only on md+
+	} else {
+		return 'md:col-span-1 md:row-span-1'; // Square images stay default on md+
 	}
+}
 </script>
 
 <section class="mt-10 px-6 md:px-16 lg:px-38 py-20 lg:py-36">
 	<!-- Bento Grid -->
 	<div
-		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[150px] md:auto-rows-[200px] lg:auto-rows-[250px] grid-auto-flow-dense"
+		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[200px] lg:auto-rows-[250px]"
 	>
 		{#if oeuvres.length > 0}
 			{#each oeuvres as oeuvre}
 				<!-- Image Container with Adaptive Grid Span -->
 				<div
-					class={`relative border overflow-hidden bg-black shadow-md ${getGridClass(oeuvre.data.image)}`}
+					class={`relative border overflow-hidden bg-black shadow-md 
+                    ${getGridClass(oeuvre.data.image)} md:${getGridClass(oeuvre.data.image)}`}
 				>
 					<!-- Image -->
-					<PrismicImage field={oeuvre.data.image} class="w-full h-full object-cover" />
+					<PrismicImage field={oeuvre.data.image} class="w-full h-auto md:h-full object-cover" />
 
 					<!-- Gradient Overlay (Hidden on Hover) -->
 					<div
