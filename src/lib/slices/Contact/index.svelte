@@ -4,7 +4,7 @@
 	export let slice: Content.ContactSlice;
 </script>
 
-<section class="mt-10 px-6 md:px-16 lg:px-38 py-20 lg:py-36">
+<section class="mt-10 px-6 md:px-16 lg:px-38 py-12 md:py-20">
 	<div class="text-center text-lg md:text-xl space-y-4">
 		<h1 class="text-5xl md:text-6xl">{slice.primary.titre}</h1>
 		<p>{slice.primary.description}</p>
