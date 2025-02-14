@@ -19,7 +19,7 @@
 {#if selectedImage}
     <!-- Lightbox Background (Improved Accessibility) -->
     <div 
-        class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50"
+        class="fixed inset-0 bg-[#000000d8] backdrop-blur-lg flex justify-center items-center z-50"
         role="dialog"
         aria-modal="true"
         aria-labelledby="lightbox-title"
