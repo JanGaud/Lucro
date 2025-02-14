@@ -49,6 +49,13 @@
 					"allowText": true,
 					"repeat": false
 				}
+			},
+			"droits": {
+				"type": "Text",
+				"config": {
+					"label": "droits",
+					"placeholder": ""
+				}
 			}
 		}
 	}

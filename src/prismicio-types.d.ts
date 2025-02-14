@@ -64,6 +64,17 @@ interface FooterDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
 	btn: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+	/**
+	 * droits field in *footer*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: footer.droits
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	droits: prismic.KeyTextField;
 }
 
 /**
