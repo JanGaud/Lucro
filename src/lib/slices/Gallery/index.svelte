@@ -35,7 +35,7 @@
 	}
 </script>
 
-<section class="mt-10 px-6 md:px-16 lg:px-38 py-12 md:py-20">
+<section class="mt-10 px-6 md:px-16 lg:px-38 py-22 md:py-26">
 	<h1 class="text-5xl md:text-6xl text-center mb-10">{slice.primary.titre}</h1>
 	<!-- Bento Grid -->
 	<div

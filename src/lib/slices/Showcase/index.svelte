@@ -24,7 +24,7 @@
 </script>
 
 <section
-	class="px-4 md:px-16 lg:px-38 pb-12 md:pb-20"
+	class="px-4 md:px-16 lg:px-38 pb-22 md:pb-26"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >

@@ -8,7 +8,7 @@
 <!-- component -->
 <footer class="w-full flex items-center justify-center bg-black pt-4">
 	<div class="md:w-2/3 w-full px-4 text-white flex flex-col text-center md:text-left">
-		<div class="w-full text-7xl font-bold">
+		<div class="w-full text-6xl md:text-7xl font-bold">
 			<h1 class="w-full md:w-2/3">{footerData.slogan}</h1>
 		</div>
 		<div class="flex mt-8 flex-col md:flex-row md:justify-between">
