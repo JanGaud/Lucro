@@ -40,32 +40,3 @@
 		</div>
 	</div>
 </section>
-
-<style>
-	.shape {
-		animation: blob 10s infinite linear;
-		position: absolute;
-		will-change: transform;
-	}
-	@keyframes blob {
-		0%,
-		100% {
-			transform: translate(0, 0) scale(1);
-		}
-		25% {
-			transform: translate(30px, -50px) scale(1.1);
-		}
-		50% {
-			transform: translate(-30px, 40px) scale(1.05);
-		}
-		75% {
-			transform: translate(20px, -20px) scale(0.95);
-		}
-	}
-	.animation-delay-2000 {
-		animation-delay: -2s;
-	}
-	.animation-delay-4000 {
-		animation-delay: -4s;
-	}
-</style>

@@ -20,9 +20,9 @@
 	class="fixed top-0 left-0 w-full h-22 flex justify-between items-center px-6 md:px-20 bg-[#ffffffcf] backdrop-blur-lg shadow-md z-50 uppercase"
 >
 	<!-- Logo -->
-	<div class="w-24 h-fit overflow-hidden">
+	<a href="/" class="w-24 h-fit overflow-hidden">
 		<PrismicImage field={navData.logo} class="w-28 h-auto" />
-	</div>
+	</a>
 
 	<!-- Desktop Navigation -->
 	<div class="hidden h-full lg:flex items-center space-x-6 text-md font-bold tracking-wider">

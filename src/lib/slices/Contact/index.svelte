@@ -9,15 +9,27 @@
 		<h1 class="text-5xl md:text-6xl">{slice.primary.titre}</h1>
 		<p>{slice.primary.description}</p>
 	</div>
-	<form action="">
-		<div class="grid md:grid-cols-2 gap-6 mt-10">
+	<form action="" class="relative">
+		<!-- Background Color Blobs -->
+		<div class="absolute inset-0 flex justify-center items-center -z-10">
+			<div
+				class="absolute -top-10 -left-16 w-56 h-56 rounded-full bg-pink-400 filter blur-3xl opacity-80 mix-blend-multiply shape"
+			></div>
+			<div
+				class="absolute -top-16 -right-12 w-56 h-56 rounded-full bg-yellow-400 filter blur-3xl opacity-80 mix-blend-multiply shape animation-delay-2000"
+			></div>
+			<div
+				class="absolute -bottom-5 left-1/2 transform -translate-x-1/2 w-56 h-56 rounded-full bg-violet-400 filter blur-3xl opacity-80 mix-blend-multiply shape animation-delay-4000"
+			></div>
+		</div>
+		<div class="flex flex-col md:grid md:grid-cols-2 gap-6 mt-10">
 			<div>
 				<input
 					type="text"
 					id="prenom"
 					name="prenom"
 					placeholder="Prénom"
-					class="w-full p-2 border border-gray-300 rounded-md shadow placeholder-gray-500"
+					class="w-full p-2 border-2 border-black rounded-md shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400 !important"
 				/>
 			</div>
 			<div>
@@ -26,7 +38,7 @@
 					id="nom"
 					name="nom"
 					placeholder="Nom"
-					class="w-full p-2 border border-gray-300 rounded-md shadow placeholder-gray-500"
+					class="w-full p-2 border-2 border-black rounded-md shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400 !important"
 				/>
 			</div>
 			<div>
@@ -35,7 +47,7 @@
 					id="email"
 					name="email"
 					placeholder="Email"
-					class="w-full p-2 border border-gray-300 rounded-md shadow placeholder-gray-500"
+					class="w-full p-2 border-2 border-black rounded-md shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400 !important"
 				/>
 			</div>
 			<div>
@@ -44,18 +56,24 @@
 					id="telephone"
 					name="telephone"
 					placeholder="Téléphone"
-					class="w-full p-2 border border-gray-300 rounded-md shadow placeholder-gray-500"
+					class="w-full p-2 border-2 border-black rounded-md shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400 !important"
 				/>
 			</div>
 			<div class="col-span-2">
-				<textarea 
-					id="message" 
-					name="message" 
+				<textarea
+					id="message"
+					name="message"
 					placeholder="Message"
-					class="w-full min-h-44 p-2 border border-gray-300 rounded-md shadow placeholder-gray-500 resize-none"
+					class="w-full min-h-44 p-2 border-2 border-black rounded-md shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg resize-none outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400 !important"
 				></textarea>
 			</div>
 		</div>
-		<button type="submit" class="mt-6 bg-primary text-white py-2 px-4 rounded-md">Envoyer</button>
+		<div class="w-full flex justify-center my-4">
+			<button
+				type="submit"
+				class="btn-effect border-2 border-black bg-[#ffffffcf] backdrop-blur-lg text-black"
+				>Envoyer</button
+			>
+		</div>
 	</form>
 </section>
