@@ -26,8 +26,8 @@
     >
         <!-- Lightbox Content (Auto-focus) -->
         <!-- svelte-ignore a11y-autofocus -->
-        <div class="relative p-4 max-w-full max-h-full" autofocus>
-            <img src={selectedImage.url} alt="Artwork" class="max-w-full max-h-[90vh] pointer-events-none object-contain rounded-lg shadow-lg" />
+        <div class="relative p-4 max-w-full max-h-full shadow-2xl" autofocus>
+            <img src={selectedImage.url} alt="Artwork" class="max-w-full max-h-[90vh] pointer-events-none object-contain" />
 
             <!-- Close Button (Now Properly Interactive) -->
             <button 
