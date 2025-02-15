@@ -4,14 +4,12 @@
 
 html {
     font-family: "Literata", sans-serif;
+    scroll-behavior: smooth;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "Dancing Script", cursive;
 }
-
-
-
 
 /* btn fx */
 .btn-effect {
