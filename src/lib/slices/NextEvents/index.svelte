@@ -20,7 +20,7 @@
 	};
 
 	// Function to determine how to display event dates
-	const formatEventDates = (event: { data: { dates: any; duree_prolonge: any; }; }): string => {
+	const formatEventDates = (event: { data: { dates: any; duree_prolonge: any } }): string => {
 		const dates = event.data.dates;
 		const isExtended = event.data.duree_prolonge;
 
@@ -36,31 +36,45 @@
 			return `Du ${startDate} au ${endDate}`;
 		} else {
 			// Display "Le 5, 6, 7 octobre"
-			let groupedDays = dates.map((d: { date: string | number | Date; }) => new Date(d.date).getDate()).join(', ');
+			let groupedDays = dates
+				.map((d: { date: string | number | Date }) => new Date(d.date).getDate())
+				.join(', ');
 			return `Le ${groupedDays} ${firstMonth} ${year}`;
 		}
 	};
+
+	console.log(slice.primary.voir_plus.text);
 </script>
 
-<section class="relative w-full overflow-hidden py-12"
+<section
+	class="relative w-full overflow-hidden py-12"
 	data-slice-type={slice.slice_type}
-	data-slice-variation={slice.variation}>
+	data-slice-variation={slice.variation}
+>
+	<div class="text-right mb-8 px-4 md:px-16 lg:px-38">
+		<PrismicLink class="hover:text-pink-400 transition-colors duration-300 uppercase" field={slice.primary.voir_plus} />
+	</div>
+
 	<div class="scroll-wrapper">
 		<ul class="scroll-content">
 			{#each duplicateEvents as event}
-				<li class="w-[400px] flex border-2 border-gray-400 shadow-md hover:border-pink-400 transition-colors duration-300">
+				<li
+					class="w-[325px] md:w-[400px] flex border-2 border-gray-100 shadow-md hover:border-pink-400 transition-colors duration-300"
+				>
 					<PrismicLink field={event.data.lien} class="w-full h-full flex justify-between">
-							<div class="h-auto w-1/3 flex items-center justify-center overflow-hidden border-r border-gray-400 p-1">
-								{#if event.data.logo?.url}
-									<PrismicImage field={event.data.logo} class="h-full w-full object-contain" />
-								{:else}
-									<Icon class="h-20 w-20 text-gray-400" icon="fxemoji:artistpalette" />
-								{/if}
-							</div>
-							<div class="ml-4 w-2/3 flex flex-col justify-center gap-4 p-1">
-								<h3 class="text-2xl font-semibold text-black">{event.data.lieu}</h3>
-								<small class="text-gray-700">{formatEventDates(event)}</small>
-							</div>
+						<div
+							class="h-auto w-1/3 flex items-center justify-center overflow-hidden border-r border-gray-100 p-1"
+						>
+							{#if event.data.logo?.url}
+								<PrismicImage field={event.data.logo} class="h-full w-full object-contain drop-shadow-md" />
+							{:else}
+								<Icon class="h-20 w-20 drop-shadow-md" icon="fxemoji:artistpalette" />
+							{/if}
+						</div>
+						<div class="ml-4 w-2/3 flex flex-col justify-center gap-4 p-1">
+							<h3 class="text-xl md:text-2xl font-semibold text-black">{event.data.lieu}</h3>
+							<small class="text-gray-700">{formatEventDates(event)}</small>
+						</div>
 					</PrismicLink>
 				</li>
 			{/each}

@@ -713,6 +713,31 @@ type HeaderSliceVariation = HeaderSliceDefault;
 export type HeaderSlice = prismic.SharedSlice<'header', HeaderSliceVariation>;
 
 /**
+ * Primary content in *NextEvents → Default → Primary*
+ */
+export interface NextEventsSliceDefaultPrimary {
+	/**
+	 * Voir plus field in *NextEvents → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: next_events.default.primary.voir_plus
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	voir_plus: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+	/**
+	 * Description field in *NextEvents → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: next_events.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	description: prismic.KeyTextField;
+}
+
+/**
  * Default variation for NextEvents Slice
  *
  * - **API ID**: `default`
@@ -721,7 +746,7 @@ export type HeaderSlice = prismic.SharedSlice<'header', HeaderSliceVariation>;
  */
 export type NextEventsSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<NextEventsSliceDefaultPrimary>,
 	never
 >;
 
@@ -921,6 +946,7 @@ declare module '@prismicio/client' {
 			HeaderSliceVariation,
 			HeaderSliceDefault,
 			NextEventsSlice,
+			NextEventsSliceDefaultPrimary,
 			NextEventsSliceVariation,
 			NextEventsSliceDefault,
 			RichTextSlice,

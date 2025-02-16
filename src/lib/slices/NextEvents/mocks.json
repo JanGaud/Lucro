@@ -2,7 +2,22 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"voir_plus": {
+				"key": "928392b7-1b11-467e-be5f-300143fb1ebf",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "shut"
+				}
+			},
+			"description": {
+				"__TYPE__": "FieldContent",
+				"value": "waste",
+				"type": "Text"
+			}
+		},
 		"items": []
 	}
 ]

@@ -1,16 +1,37 @@
 {
-	"id": "next_events",
-	"type": "SharedSlice",
-	"name": "NextEvents",
-	"description": "NextEvents",
-	"variations": [
-		{
-			"id": "default",
-			"name": "Default",
-			"docURL": "...",
-			"version": "initial",
-			"description": "Default",
-			"imageUrl": ""
-		}
-	]
+  "id": "next_events",
+  "type": "SharedSlice",
+  "name": "NextEvents",
+  "description": "NextEvents",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "voir_plus": {
+          "type": "Link",
+          "config": {
+            "label": "Voir plus",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Description",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
 }
