@@ -25,6 +25,20 @@
             "label": "Description",
             "placeholder": ""
           }
+        },
+        "telephone": {
+          "type": "Text",
+          "config": {
+            "label": "Téléphone",
+            "placeholder": ""
+          }
+        },
+        "courriel": {
+          "type": "Text",
+          "config": {
+            "label": "Courriel",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

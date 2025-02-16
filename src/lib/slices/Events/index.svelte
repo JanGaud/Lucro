@@ -63,14 +63,14 @@
 </script>
 
 <!-- ✅ Display Filtered Events -->
-<section class="mt-10 px-6 md:px-16 lg:px-38 py-20"
+<section class="mt-10 px-6 md:px-16 lg:px-38 py-22 md:py-26"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}>
-    <h1 class="text-5xl md:text-6xl font-bold mb-6 text-center">Événements</h1>
+    <h1 class="text-5xl md:text-6xl text-center mb-10">Événements</h1>
 
 	<!-- ✅ Year Filter Dropdown -->
-    <div class="flex justify-center mb-8">
-        <label for="year-select" class="text-lg font-semibold mr-3">Filtrer par année:</label>
+    <div class="flex justify-center items-center mb-8">
+        <label for="year-select" class="text-lg mr-3">Filtrer par année:</label>
         <select
             id="year-select"
             bind:value={selectedYear}

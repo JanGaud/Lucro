@@ -540,6 +540,26 @@ export interface ContactSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	description: prismic.KeyTextField;
+
+	/**
+	 * Téléphone field in *Contact → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.telephone
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	telephone: prismic.KeyTextField;
+
+	/**
+	 * Courriel field in *Contact → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contact.default.primary.courriel
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	courriel: prismic.KeyTextField;
 }
 
 /**

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '@iconify/svelte';
 	import type { Content } from '@prismicio/client';
 
 	export let slice: Content.ContactSlice;
@@ -80,4 +81,17 @@
 			>
 		</div>
 	</form>
+
+	<div class="grid md:grid-cols-2 gap-4 h-fit md:h-16 w-full text-2xl mt-20">
+		<a href="tel:+{slice.primary.telephone}" class="p-2 flex items-center gap-4 rounded-full border-2 border-black bg-[#ffffffcf] backdrop-blur-lg">
+			<Icon icon="iconoir:phone" class="h-full w-auto" />
+			<div class=""><p>{slice.primary.telephone}</p></div>
+		</a>
+		<a href="mailto:{slice.primary.courriel}"
+			class="p-2 flex items-center gap-4 rounded-full border-2 text-white border-pink-400 bg-[#000000cf] backdrop-blur-lg"
+		>
+			<Icon icon="ic:outline-alternate-email" class="h-full w-auto" />
+			<div class=""><p>{slice.primary.courriel}</p></div>
+		</a>
+	</div>
 </section>

@@ -12,6 +12,16 @@
 				"__TYPE__": "FieldContent",
 				"value": "cookies",
 				"type": "Text"
+			},
+			"telephone": {
+				"__TYPE__": "FieldContent",
+				"value": "stay",
+				"type": "Text"
+			},
+			"courriel": {
+				"__TYPE__": "FieldContent",
+				"value": "unit",
+				"type": "Text"
 			}
 		},
 		"items": []
