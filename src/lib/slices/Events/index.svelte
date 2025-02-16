@@ -96,18 +96,18 @@
                     </div>
 
                     <!-- ✅ Event Details -->
-                    <div class="p-6 flex flex-col flex-grow text-center">
+                    <div class="p-6 flex flex-col flex-grow text-center text-balance">
                         <h3 class="text-2xl font-semibold text-gray-900">{event.data.lieu}</h3>
-                        <span class="text-gray-600 text-lg">{formatEventDates(event)}</span>
+                        <small class="text-gray-600 text-md">{formatEventDates(event)}</small>
 
                         <!-- ✅ Call-to-action (Link Button always at bottom) -->
                         {#if event.data.lien?.url}
-                            <div class="mt-auto pt-4">
+                            <div class="mt-auto pt-4 flex justify-center">
                                 <PrismicLink
                                     field={event.data.lien}
-                                    class="inline-block bg-pink-400 text-white text-md font-semibold px-6 py-2 rounded-full hover:bg-black uppercase transition-colors duration-300 shadow-md"
+                                    class="btn-effect border-2 border-black bg-[#ffffffcf] backdrop-blur-lg text-black"
                                 >
-                                    Voir le site
+                                    <span>Voir le site</span>
                                 </PrismicLink>
                             </div>
                         {/if}
