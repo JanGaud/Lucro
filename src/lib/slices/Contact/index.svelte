@@ -4,7 +4,11 @@
 	export let slice: Content.ContactSlice;
 </script>
 
-<section class="mt-10 px-6 md:px-16 lg:px-38 py-22 md:py-26">
+<section
+	class="mt-10 px-6 md:px-16 lg:px-38 py-22 md:py-26"
+	data-slice-type={slice.slice_type}
+	data-slice-variation={slice.variation}
+>
 	<div class="text-center text-lg md:text-xl space-y-4">
 		<h1 class="text-5xl md:text-6xl">{slice.primary.titre}</h1>
 		<p>{slice.primary.description}</p>
@@ -29,7 +33,7 @@
 					id="prenom"
 					name="prenom"
 					placeholder="Prénom"
-					class="w-full p-2 border-2 border-black  shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
+					class="w-full p-2 border-2 border-black shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
 				/>
 			</div>
 			<div>
@@ -38,7 +42,7 @@
 					id="nom"
 					name="nom"
 					placeholder="Nom"
-					class="w-full p-2 border-2 border-black  shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
+					class="w-full p-2 border-2 border-black shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
 				/>
 			</div>
 			<div>
@@ -47,7 +51,7 @@
 					id="email"
 					name="email"
 					placeholder="Email"
-					class="w-full p-2 border-2 border-black  shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
+					class="w-full p-2 border-2 border-black shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
 				/>
 			</div>
 			<div>
@@ -56,7 +60,7 @@
 					id="telephone"
 					name="telephone"
 					placeholder="Téléphone"
-					class="w-full p-2 border-2 border-black  shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
+					class="w-full p-2 border-2 border-black shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
 				/>
 			</div>
 			<div class="col-span-2">
@@ -64,7 +68,7 @@
 					id="message"
 					name="message"
 					placeholder="Message"
-					class="w-full min-h-44 p-2 border-2 border-black  shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg resize-none outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
+					class="w-full min-h-44 p-2 border-2 border-black shadow placeholder-gray-500 bg-[#ffffffcf] backdrop-blur-lg resize-none outline-none focus:outline-none focus:border-pink-400 focus:ring focus:ring-pink-400"
 				></textarea>
 			</div>
 		</div>
