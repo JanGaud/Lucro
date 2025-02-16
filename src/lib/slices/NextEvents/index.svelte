@@ -42,8 +42,6 @@
 			return `Le ${groupedDays} ${firstMonth} ${year}`;
 		}
 	};
-
-	console.log(slice.primary.voir_plus.text);
 </script>
 
 <section
