@@ -48,7 +48,7 @@
 	<div class="scroll-wrapper">
 		<ul class="scroll-content">
 			{#each duplicateEvents as event}
-				<li class="w-[400px] flex border-2 border-gray-400 shadow-md">
+				<li class="w-[400px] flex border-2 border-gray-400 shadow-md hover:border-pink-400 transition-colors duration-300">
 					<PrismicLink field={event.data.lien} class="w-full h-full flex justify-between">
 							<div class="h-auto w-1/3 flex items-center justify-center overflow-hidden border-r border-gray-400 p-1">
 								{#if event.data.logo?.url}
