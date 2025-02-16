@@ -85,7 +85,7 @@
     {#if filteredEvents.length > 0}
         <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {#each filteredEvents as event}
-                <li class="bg-white border-2 border-gray-300 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                <li class="bg-white border-2 border-gray-300 hover:border-pink-400 duration-300 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
                     <!-- ✅ Event Image / Logo -->
                     <div class="h-[250px] w-full flex justify-center items-center bg-gray-50 border-b border-gray-200">
                         {#if event.data.logo?.url}
