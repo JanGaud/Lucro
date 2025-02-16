@@ -91,7 +91,7 @@
 		display: flex;
 		gap: 2rem;
 		width: max-content;
-		animation: infinite-scroll 40s linear infinite; /* Slower speed */
+		animation: infinite-scroll 50s linear infinite; /* Slower speed */
 	}
 
 	@keyframes infinite-scroll {
