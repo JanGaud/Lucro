@@ -27,6 +27,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"next_events": {
+							"type": "SharedSlice"
+						},
 						"contact": {
 							"type": "SharedSlice"
 						},

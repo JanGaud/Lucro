@@ -4,6 +4,7 @@ import About from './About/index.svelte';
 import Contact from './Contact/index.svelte';
 import Gallery from './Gallery/index.svelte';
 import Header from './Header/index.svelte';
+import NextEvents from './NextEvents/index.svelte';
 import RichText from './RichText/index.svelte';
 import Showcase from './Showcase/index.svelte';
 
@@ -12,6 +13,7 @@ export const components = {
 	contact: Contact,
 	gallery: Gallery,
 	header: Header,
+	next_events: NextEvents,
 	rich_text: RichText,
 	showcase: Showcase
 };

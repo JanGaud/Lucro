@@ -17,6 +17,7 @@
 		"slicemachine": "start-slicemachine"
 	},
 	"devDependencies": {
+		"@iconify/svelte": "^4.2.0",
 		"@slicemachine/adapter-sveltekit": "^0.3.66",
 		"@sveltejs/adapter-auto": "^3.2.2",
 		"@sveltejs/kit": "^2.5.15",

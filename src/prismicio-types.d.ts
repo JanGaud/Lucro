@@ -5,6 +5,97 @@ import type * as prismic from '@prismicio/client';
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
+ * Item in *évenement → Dates*
+ */
+export interface EvennementDocumentDataDatesItem {
+	/**
+	 * Date field in *évenement → Dates*
+	 *
+	 * - **Field Type**: Date
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: evennement.dates[].date
+	 * - **Documentation**: https://prismic.io/docs/field#date
+	 */
+	date: prismic.DateField;
+}
+
+/**
+ * Content for évenement documents
+ */
+interface EvennementDocumentData {
+	/**
+	 * Logo field in *évenement*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: evennement.logo
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	logo: prismic.ImageField<never>;
+
+	/**
+	 * Lieu field in *évenement*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: evennement.lieu
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	lieu: prismic.KeyTextField;
+
+	/**
+	 * Durée prolongé field in *évenement*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: evennement.duree_prolonge
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	duree_prolonge: prismic.BooleanField;
+
+	/**
+	 * Dates field in *évenement*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: evennement.dates[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	dates: prismic.GroupField<Simplify<EvennementDocumentDataDatesItem>>;
+
+	/**
+	 * Lien field in *évenement*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: evennement.lien
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	lien: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * évenement document from Prismic
+ *
+ * - **API ID**: `evennement`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type EvennementDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<EvennementDocumentData>,
+	'evennement',
+	Lang
+>;
+
+/**
  * Content for footer documents
  */
 interface FooterDocumentData {
@@ -264,6 +355,7 @@ export type OeuvresTypeDocument<Lang extends string = string> = prismic.PrismicD
 >;
 
 type PageDocumentDataSlicesSlice =
+	| NextEventsSlice
 	| ContactSlice
 	| GallerySlice
 	| ShowcaseSlice
@@ -345,6 +437,7 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 >;
 
 export type AllDocumentTypes =
+	| EvennementDocument
 	| FooterDocument
 	| NavigationDocument
 	| OeuvresDocument
@@ -620,6 +713,33 @@ type HeaderSliceVariation = HeaderSliceDefault;
 export type HeaderSlice = prismic.SharedSlice<'header', HeaderSliceVariation>;
 
 /**
+ * Default variation for NextEvents Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NextEventsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *NextEvents*
+ */
+type NextEventsSliceVariation = NextEventsSliceDefault;
+
+/**
+ * NextEvents Shared Slice
+ *
+ * - **API ID**: `next_events`
+ * - **Description**: NextEvents
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NextEventsSlice = prismic.SharedSlice<'next_events', NextEventsSliceVariation>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -769,6 +889,9 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			EvennementDocument,
+			EvennementDocumentData,
+			EvennementDocumentDataDatesItem,
 			FooterDocument,
 			FooterDocumentData,
 			NavigationDocument,
@@ -797,6 +920,9 @@ declare module '@prismicio/client' {
 			HeaderSliceDefaultPrimary,
 			HeaderSliceVariation,
 			HeaderSliceDefault,
+			NextEventsSlice,
+			NextEventsSliceVariation,
+			NextEventsSliceDefault,
 			RichTextSlice,
 			RichTextSliceDefaultPrimary,
 			RichTextSliceVariation,
