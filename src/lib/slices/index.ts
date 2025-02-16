@@ -2,6 +2,7 @@
 
 import About from './About/index.svelte';
 import Contact from './Contact/index.svelte';
+import Events from './Events/index.svelte';
 import Gallery from './Gallery/index.svelte';
 import Header from './Header/index.svelte';
 import NextEvents from './NextEvents/index.svelte';
@@ -11,6 +12,7 @@ import Showcase from './Showcase/index.svelte';
 export const components = {
 	about: About,
 	contact: Contact,
+	events: Events,
 	gallery: Gallery,
 	header: Header,
 	next_events: NextEvents,

@@ -355,6 +355,7 @@ export type OeuvresTypeDocument<Lang extends string = string> = prismic.PrismicD
 >;
 
 type PageDocumentDataSlicesSlice =
+	| EventsSlice
 	| NextEventsSlice
 	| ContactSlice
 	| GallerySlice
@@ -567,6 +568,33 @@ type ContactSliceVariation = ContactSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type ContactSlice = prismic.SharedSlice<'contact', ContactSliceVariation>;
+
+/**
+ * Default variation for Events Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EventsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Events*
+ */
+type EventsSliceVariation = EventsSliceDefault;
+
+/**
+ * Events Shared Slice
+ *
+ * - **API ID**: `events`
+ * - **Description**: Events
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EventsSlice = prismic.SharedSlice<'events', EventsSliceVariation>;
 
 /**
  * Primary content in *Gallery → Default → Primary*
@@ -937,6 +965,9 @@ declare module '@prismicio/client' {
 			ContactSliceDefaultPrimary,
 			ContactSliceVariation,
 			ContactSliceDefault,
+			EventsSlice,
+			EventsSliceVariation,
+			EventsSliceDefault,
 			GallerySlice,
 			GallerySliceDefaultPrimary,
 			GallerySliceVariation,
