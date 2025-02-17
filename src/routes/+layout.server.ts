@@ -54,9 +54,9 @@ export async function load({ fetch }: { fetch: (input: RequestInfo, init?: Reque
 
             return { ...event, eventDate };
         })
-        .filter(event => event !== null) // Remove null values
+        .filter(event => event !== null)
         .sort((a, b) => Math.abs(a!.eventDate.getTime() - today.getTime()) - Math.abs(b!.eventDate.getTime() - today.getTime())) // Sort by closest date
-        .slice(0, 10); // Keep only the 10 closest events
+        .slice(0, 10);
 
     return {
         nav,
