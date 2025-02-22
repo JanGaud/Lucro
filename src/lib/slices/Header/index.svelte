@@ -39,7 +39,7 @@
 	<div class="hidden lg:grid grid-cols-3 w-full h-full absolute inset-0">
 		{#each images as image (image.id)}
 			<div
-				class="relative overflow-hidden opacity-60 hover:opacity-75 transition-opacity duration-200"
+				class="relative overflow-hidden opacity-60 hover:opacity-90 transition-opacity duration-200"
 			>
 				<PrismicImage field={image} class="w-full h-full object-cover object-center" />
 			</div>
@@ -62,13 +62,13 @@
 		class="z-10 text-center space-y-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
 		 px-4 sm:px-8 md:px-12 lg:px-16 w-full max-w-screen-lg pointer-events-none"
 	>
-		<h1 class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-wider drop-shadow-md opacity-80">
+		<h1 class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-wider drop-shadow-lg opacity-80">
 			{slice.primary.titre}
 		</h1>
-		<h2 class="text-4xl md:text-5xl lg:text-7xl tracking-wide shadow-lg drop-shadow-md">
+		<h2 class="text-4xl md:text-5xl lg:text-7xl tracking-wide shadow-lg drop-shadow-lg">
 			{slice.primary.sous_titre}
 		</h2>
-		<p class="text-xl lg:text-2xl drop-shadow-md">{slice.primary.slogan}</p>
+		<p class="text-xl lg:text-2xl drop-shadow-lg">{slice.primary.slogan}</p>
 
 		<!-- Buttons with Hover Effect -->
 		<div
