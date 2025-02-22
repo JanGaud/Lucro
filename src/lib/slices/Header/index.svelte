@@ -39,7 +39,7 @@
 	<div class="hidden lg:grid grid-cols-3 w-full h-full absolute inset-0">
 		{#each images as image (image.id)}
 			<div
-				class="relative overflow-hidden opacity-30 hover:opacity-75 transition-opacity duration-200"
+				class="relative overflow-hidden opacity-60 hover:opacity-75 transition-opacity duration-200"
 			>
 				<PrismicImage field={image} class="w-full h-full object-cover object-center" />
 			</div>
