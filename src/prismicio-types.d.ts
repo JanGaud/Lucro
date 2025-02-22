@@ -67,17 +67,6 @@ interface EvennementDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
 	dates: prismic.GroupField<Simplify<EvennementDocumentDataDatesItem>>;
-
-	/**
-	 * Lien field in *évenement*
-	 *
-	 * - **Field Type**: Link
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: evennement.lien
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-	 */
-	lien: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**

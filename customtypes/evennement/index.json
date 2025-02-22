@@ -51,17 +51,6 @@
 						}
 					}
 				}
-			},
-			"lien": {
-				"type": "Link",
-				"config": {
-					"label": "Lien",
-					"placeholder": "",
-					"select": null,
-					"allowTargetBlank": true,
-					"allowText": true,
-					"repeat": false
-				}
 			}
 		}
 	}

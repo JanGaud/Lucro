@@ -113,18 +113,6 @@
 					<div class="p-6 flex flex-col flex-grow text-center text-balance">
 						<h3 class="text-2xl font-semibold text-gray-900">{event.data.lieu}</h3>
 						<small class="text-gray-600 text-md">{formatEventDates(event)}</small>
-
-						<!-- ✅ Call-to-action (Link Button always at bottom) -->
-						{#if event.data.lien?.url}
-							<div class="mt-auto pt-4 flex justify-center">
-								<PrismicLink
-									field={event.data.lien}
-									class="btn-effect border-2 border-black bg-[#ffffffcf] backdrop-blur-lg text-black"
-								>
-									<span>Voir le site</span>
-								</PrismicLink>
-							</div>
-						{/if}
 					</div>
 				</li>
 			{/each}

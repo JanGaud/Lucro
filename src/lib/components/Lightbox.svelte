@@ -19,7 +19,7 @@
 {#if selectedImage}
     <!-- Lightbox Background -->
     <div 
-        class="fixed inset-0 bg-[#000000d8] backdrop-blur-lg flex justify-center items-center z-50"
+        class="fixed inset-0 bg-[#ffffffd8] backdrop-blur-lg flex justify-center items-center z-50"
         role="dialog"
         aria-modal="true"
         aria-labelledby="lightbox-title"
@@ -44,7 +44,7 @@
 
             <!-- Close Button -->
             <button 
-                class="absolute top-0 right-0 text-white active:text-red-600 text-5xl focus:outline-none"
+                class="absolute top-0 right-0 text-black active:text-red-600 text-5xl focus:outline-none"
                 on:click={closeLightbox}
                 aria-label="Fermer la boîte de dialogue"
             >

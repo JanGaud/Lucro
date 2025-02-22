@@ -7,7 +7,12 @@ html {
     scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Dancing Script", cursive;
 }
 
@@ -121,4 +126,32 @@ h1, h2, h3, h4, h5, h6 {
 
 .animation-delay-4000 {
     animation-delay: -4s;
+}
+
+
+/* richtext styling */
+
+.custom-richtext h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+.custom-richtext h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 0.75rem;
+}
+
+.custom-richtext p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.custom-richtext a {
+    color: #007BFF;
+    text-decoration: underline;
 }

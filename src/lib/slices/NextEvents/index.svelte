@@ -59,7 +59,7 @@
 				<li
 					class="w-[325px] md:w-[400px] flex border-2 border-gray-100 shadow-md hover:border-pink-400  rounded-lg  transition-colors duration-300"
 				>
-					<PrismicLink field={event.data.lien} class="w-full h-full flex justify-between  rounded-lg ">
+					<div class="w-full h-full flex justify-between  rounded-lg ">
 						<div
 							class="h-auto w-1/3 bg-gray-50 flex items-center justify-center  rounded-lg  overflow-hidden border-r border-gray-100 p-1"
 						>
@@ -73,7 +73,7 @@
 							<h3 class="text-xl md:text-2xl font-semibold text-black">{event.data.lieu}</h3>
 							<small class="text-gray-700">{formatEventDates(event)}</small>
 						</div>
-					</PrismicLink>
+					</div>
 				</li>
 			{/each}
 		</ul>
