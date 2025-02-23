@@ -52,7 +52,7 @@
 			<PrismicImage
 				field={image}
 				class="w-full h-full object-cover object-center absolute transition-opacity duration-700"
-				style="opacity: {i === $activeIndex ? 0.45 : 0};"
+				style="opacity: {i === $activeIndex ? 0.60 : 0};"
 			/>
 		{/each}
 	</div>
