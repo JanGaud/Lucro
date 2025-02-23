@@ -29,9 +29,7 @@
 	data-slice-variation={slice.variation}
 >
 	<!-- Title & Button Row -->
-	<div
-		class="w-full flex gap-4 flex-col justify-center items-center md:flex-row md:justify-between mb-14"
-	>
+	<div class="w-full flex gap-4 flex-col justify-center items-center md:flex-row md:justify-between mb-14">
 		<h2 class="text-5xl md:text-6xl">{slice.primary.titre}</h2>
 		<PrismicLink field={slice.primary.more}>
 			<button class="btn-effect border-2 border-black bg-[#ffffffcf] backdrop-blur-lg text-black">
@@ -41,28 +39,30 @@
 	</div>
 
 	<!-- Bento Grid -->
-	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[200px] lg:auto-rows-[250px]">
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-20 auto-rows-auto md:auto-rows-[200px] lg:auto-rows-[250px]">
 		{#each oeuvres as oeuvre}
 			<!-- Clickable Image Container -->
 			<div
-				class={`relative border overflow-hidden bg-black shadow-md cursor-pointer ${getGridClass(oeuvre.data.image)}`}
+				class={`relative border bg-black shadow-md cursor-pointer ${getGridClass(oeuvre.data.image)}`}
 				role="button"
 				tabindex="0"
 				aria-label="Afficher l’image en plein écran"
 				on:click={() => openLightbox(oeuvre.data.image)}
-				on:keydown={(event) => (event.key === 'Enter' || event.key === ' ') && openLightbox(oeuvre.data.image)}
+				on:keydown={(event) =>
+					(event.key === 'Enter' || event.key === ' ') && openLightbox(oeuvre.data.image)
+				}
 			>
 				<!-- Image -->
 				<PrismicImage
 					field={oeuvre.data.image}
-					class="w-full h-auto md:h-full object-cover transition-transform duration-300 hover:scale-105"
+					class="w-full h-auto md:h-full object-cover"
 				/>
 
-				<!-- Gradient Overlay -->
+				<!-- Info Bubble positioned just below and overlapping the image -->
 				<div
-					class="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent text-white p-4 transition-opacity duration-300 opacity-100 hover:opacity-0 flex flex-col justify-end"
+					class="absolute border bottom-[-75px] left-4 right-4 bg-[#ffffff56] backdrop-blur-lg text-black p-2 rounded-lg shadow-lg flex flex-col gap-1"
 				>
-					<h3 class="text-lg lg:text-2xl tracking-wider font-bold drop-shadow-md">
+					<h3 class="text-xl tracking-wider font-bold drop-shadow-md">
 						{oeuvre.data.titre}
 					</h3>
 					<p class="text-sm drop-shadow-md">{oeuvre.data.dimensions}</p>

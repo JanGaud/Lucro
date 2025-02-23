@@ -20,7 +20,7 @@
 	</div>
 
 	<!-- Image Container (Aligned to Bottom) -->
-	<div class="relative w-full h-auto flex items-end justify-center border-b border-gray-300 shadow">
+	<div class="relative w-full h-auto flex items-end justify-center border border-gray-700 shadow">
 		<!-- Background Color Blobs -->
 		<div class="absolute inset-0 flex justify-center items-center -z-10">
 			<div

@@ -6,7 +6,7 @@
 </script>
 
 <!-- component -->
-<footer class="w-full flex items-center justify-center bg-white border-t-2 pt-4">
+<footer class="w-full flex items-center justify-center bg-white border-t-2 border-gray-600 pt-4">
 	<div class="md:w-2/3 w-full px-4 text-black flex flex-col text-center md:text-left">
 		<div class="w-full text-6xl md:text-7xl font-bold">
 			<h1 class="w-full md:w-2/3">{footerData.slogan}</h1>
