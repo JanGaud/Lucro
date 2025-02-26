@@ -39,7 +39,7 @@
 	</div>
 
 	<!-- Bento Grid -->
-	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-20 auto-rows-auto md:auto-rows-[200px] lg:auto-rows-[250px]">
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-24 auto-rows-auto md:auto-rows-[200px] lg:auto-rows-[250px]">
 		{#each oeuvres as oeuvre}
 			<!-- Clickable Image Container -->
 			<div

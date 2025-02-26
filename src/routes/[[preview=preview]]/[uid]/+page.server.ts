@@ -24,6 +24,11 @@ export async function load({ params, fetch, cookies, url }: {
 			return null;
 		});
 
+		const OeuvreType = await client.getAllByType('oeuvres_type').catch(err => {
+			return null;
+		});
+
+		console.log('types',OeuvreType);
 		// ✅ Handle missing page
 		if (!page || !page.data) {
 			throw error(404, `Page "${params.uid}" not found`);
@@ -37,7 +42,7 @@ export async function load({ params, fetch, cookies, url }: {
 				page: currentPage,
 			})
 			.catch(err => {
-				return { results: [], total_pages: 1 }; // Return default data
+				return { results: [], total_pages: 1 };
 			});
 
 		return {

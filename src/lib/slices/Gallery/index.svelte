@@ -37,7 +37,7 @@
 <section class="mt-10 px-6 md:px-16 lg:px-38 py-22 md:py-26">
 	<h1 class="text-5xl md:text-6xl text-center mb-10">{slice.primary.titre}</h1>
 	<!-- Bento Grid -->
-	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-20 auto-rows-auto md:auto-rows-[200px] lg:auto-rows-[250px] mb-32">
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 gap-y-24 auto-rows-auto md:auto-rows-[200px] lg:auto-rows-[250px] mb-32">
 		{#if oeuvres.length > 0}
 			{#each oeuvres as oeuvre}
 				<!-- Image Container with Adaptive Grid Span -->
@@ -84,7 +84,7 @@
 		{#if currentPage > 1}
 			<button
 				on:click={() => changePage(currentPage - 1)}
-				class="px-6 py-2 bg-pink-500 text-black shadow border hover:bg-pink-400 transition"
+				class="px-6 py-2 bg-pink-300 text-black shadow border hover:bg-pink-400 rounded-full transition"
 			>
 				← Page précédente
 			</button>
@@ -97,7 +97,7 @@
 		{#if currentPage < totalPages}
 			<button
 				on:click={() => changePage(currentPage + 1)}
-				class="px-6 py-2 bg-pink-500 text-black shadow border hover:bg-pink-400 transition"
+				class="px-6 py-2 bg-pink-300 text-black shadow border hover:bg-pink-400 rounded-full transition"
 			>
 				Page suivante →
 			</button>
