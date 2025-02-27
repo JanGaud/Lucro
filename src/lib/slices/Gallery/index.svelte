@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import { PrismicImage } from '@prismicio/svelte';
 	import { openLightbox } from '$lib/stores/lightbox';
@@ -8,7 +8,7 @@
 	export let slice: Content.GallerySlice;
 
 	// Ensure page data is correctly initialized
-	$: pageData = $page?.data ?? {};
+	$: pageData = page?.data ?? {};
 	$: oeuvres = pageData?.oeuvres ?? [];
 	$: currentPage = pageData?.currentPage ?? 1;
 	$: totalPages = pageData?.totalPages ?? 1;

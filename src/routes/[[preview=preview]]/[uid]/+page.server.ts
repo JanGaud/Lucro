@@ -28,7 +28,6 @@ export async function load({ params, fetch, cookies, url }: {
 			return null;
 		});
 
-		console.log('types',OeuvreType);
 		// ✅ Handle missing page
 		if (!page || !page.data) {
 			throw error(404, `Page "${params.uid}" not found`);

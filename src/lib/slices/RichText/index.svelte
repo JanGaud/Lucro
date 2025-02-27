@@ -2,13 +2,13 @@
 	import type { Content } from '@prismicio/client';
 	import { PrismicRichText } from '@prismicio/svelte';
 	import Label from './Label.svelte';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
 	export let slice: Content.RichTextSlice;
 </script>
 
 <section class="mt-10 px-6 md:px-16 lg:px-38 py-22 md:py-26 text-balance">
-	<h1 class="text-5xl md:text-6xl text-center mb-10">{$page.data.title}</h1>
+	<h1 class="text-5xl md:text-6xl text-center mb-10">{page.data.title}</h1>
 	<div class="relative">
 		<!-- Background Color Blobs -->
 		<div class="absolute inset-0 flex justify-center items-center -z-10">

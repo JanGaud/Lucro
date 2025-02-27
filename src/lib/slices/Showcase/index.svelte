@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { PrismicImage, PrismicLink } from '@prismicio/svelte';
 	import { openLightbox } from '$lib/stores/lightbox';
 	export let slice: Content.ShowcaseSlice;
 
-	let oeuvres = $page.data.oeuvres;
+	let oeuvres = page.data.oeuvres;
 
 	// Function to determine grid span classes based on image aspect ratio
 	function getGridClass(image: { dimensions: { width: any; height: any } }) {

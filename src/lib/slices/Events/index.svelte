@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import Icon from '@iconify/svelte';
 	import { PrismicImage, PrismicLink } from '@prismicio/svelte';
 
 	export let slice: Content.EventsSlice;
 
-	let events = $page.data.events;
+	let events = page.data.events;
 
 	// ✅ Function to format a single date in French
 	const formatDate = (dateString: string, includeYear = true): string => {

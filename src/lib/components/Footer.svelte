@@ -1,8 +1,8 @@
 <script>
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { PrismicImage, PrismicLink } from '@prismicio/svelte';
 
-	const footerData = $page.data.footer.data;
+	const footerData = page.data.footer.data;
 </script>
 
 <!-- component -->
