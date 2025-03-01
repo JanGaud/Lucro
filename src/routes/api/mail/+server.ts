@@ -33,23 +33,27 @@ export const POST: RequestHandler = async ({ request }) => {
             return new Response('Erreur SMTP.', { status: 500 });
         }
 
-        // Email options
+        // Define the HTML email
+        const htmlContent = `
+            <html>
+                <body>
+                    <h1 style="color: #333;">Nouveau Message de ${prenom} ${nom}</h1>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Téléphone:</strong> ${telephone || 'Non fourni'}</p>
+                    <p><strong>Souhaite acheter:</strong> ${acheter ? 'Oui' : 'Non'}</p>
+                    <p><strong>Œuvres sélectionnées:</strong> ${oeuvres.length > 0 ? oeuvres.map(o => o.titre).join(', ') : 'Aucune'}</p>
+                    <h2>Message:</h2>
+                    <p>${message.replace(/\n/g, '<br>')}</p>
+                </body>
+            </html>
+        `;
+
+        // Email options with HTML content
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: 'janisgaudreault.jg@gmail.com', // Replace with your actual email
+            to: process.env.EMAIL_USER,
             subject: `Nouveau message de ${prenom} ${nom}`,
-            text: `
-                📩 Nouveau message reçu !
-                🏷️ Nom: ${nom}
-                🏷️ Prénom: ${prenom}
-                📧 Email: ${email}
-                📞 Téléphone: ${telephone ? telephone : 'Non fourni'}
-                🖼️ Souhaite acheter: ${acheter ? 'Oui' : 'Non'}
-                🖼️ Œuvres sélectionnées: ${oeuvres.length > 0 ? oeuvres.map((o: { titre: any; }) => o.titre).join(', ') : 'Aucune'}
-                
-                ✉️ Message:
-                ${message}
-            `
+            html: htmlContent
         };
 
         await transporter.sendMail(mailOptions);
