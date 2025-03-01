@@ -1,8 +1,15 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import type { Content } from '@prismicio/client';
-	import { page } from '$app/state';
 	import { onMount } from 'svelte';
+	import { page } from '$app/state';
+	import Popup from '$lib/components/Popup.svelte';
+	import {
+		validateName,
+		validateEmail,
+		validatePhone,
+		validateMessage
+	} from '$lib/utils/formValidator';
 
 	export let slice: Content.ContactSlice;
 	let acheter: boolean = false;
@@ -13,6 +20,23 @@
 	let email = '';
 	let telephone = '';
 	let message = '';
+	let showPopup = false;
+	let popupMessage = '';
+	let loading = false;
+
+	let formErrors: {
+		prenom: string | null;
+		nom: string | null;
+		email: string | null;
+		telephone: string | null;
+		message: string | null;
+	} = {
+		prenom: null,
+		nom: null,
+		email: null,
+		telephone: null,
+		message: null
+	};
 
 	onMount(() => {
 		oeuvresDisponibles = page.data.oeuvres.filter(
@@ -36,58 +60,79 @@
 		oeuvresSelectionnees = oeuvresSelectionnees.filter((o) => o.id !== id);
 	}
 
+	function validateForm() {
+		formErrors.prenom = validateName(prenom);
+		formErrors.nom = validateName(nom);
+		formErrors.email = validateEmail(email);
+		formErrors.telephone = validatePhone(telephone);
+		formErrors.message = validateMessage(message);
+
+		return Object.values(formErrors).every((error) => error === null);
+	}
+
+	function displayPopup(message: string) {
+		popupMessage = message;
+		showPopup = true;
+	}
+
 	async function envoyerFormulaire() {
-		const data = {
-			prenom,
-			nom,
-			email,
-			telephone,
-			acheter,
-			oeuvres: oeuvresSelectionnees.map((oeuvre) => ({
-				id: oeuvre.id,
-				titre: oeuvre.data.titre
-			})),
-			message
-		};
+		if (validateForm()) {
+			loading = true;
+			const data = {
+				prenom,
+				nom,
+				email,
+				telephone,
+				acheter,
+				oeuvres: oeuvresSelectionnees.map((oeuvre) => ({
+					id: oeuvre.id,
+					titre: oeuvre.data.titre
+				})),
+				message
+			};
 
-		try {
-			const response = await fetch('/api/mail', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(data)
-			});
+			try {
+				const response = await fetch('/api/mail', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(data)
+				});
 
-			if (response.ok) {
-				alert('Message envoyé avec succès !');
-			} else {
-				const errorText = await response.text();
-				alert(`Erreur lors de l'envoi: ${errorText}`);
+				if (response.ok) {
+					console.log('Response OK');
+					prenom = '';
+					nom = '';
+					email = '';
+					telephone = '';
+					message = '';
+					oeuvresSelectionnees = [];
+					acheter = false;
+					displayPopup('Message envoyé avec succès !');
+				} else {
+					const errorText = await response.text();
+					displayPopup(`Erreur lors de l'envoi: ${errorText}`);
+				}
+			} catch (error) {
+				console.error('Erreur:', error);
+				displayPopup('Impossible d’envoyer le message.');
+			} finally {
+				loading = false;
 			}
-		} catch (error) {
-			console.error('Erreur:', error);
-			alert('Impossible d’envoyer le message.');
+		} else {
+			displayPopup('Veuillez corriger les erreurs dans le formulaire avant de soumettre.');
 		}
 	}
 </script>
 
 <section class="mt-10 px-6 md:px-16 lg:px-38 py-22 md:py-26 relative">
+	<Popup message={popupMessage} show={showPopup} />
+
 	<div class="text-center text-lg md:text-xl space-y-4">
 		<h1 class="text-5xl md:text-6xl">{slice.primary.titre}</h1>
 		<p>{slice.primary.description}</p>
 	</div>
 
 	<form class="relative">
-		<!-- Colored Bubbles -->
-		<div
-			class="absolute pointer-events-none -top-10 -left-16 w-56 h-56 rounded-full bg-pink-400 filter blur-3xl opacity-80 mix-blend-multiply shape animate-pulse"
-		></div>
-		<div
-			class="absolute pointer-events-none -top-16 -right-12 w-56 h-56 rounded-full bg-yellow-400 filter blur-3xl opacity-80 mix-blend-multiply shape animate-bounce"
-		></div>
-		<div
-			class="absolute pointer-events-none -bottom-5 left-1/2 transform -translate-x-1/2 w-56 h-56 rounded-full bg-violet-400 filter blur-3xl opacity-80 mix-blend-multiply shape animate-spin"
-		></div>
-
 		<div class="flex flex-col md:grid md:grid-cols-2 gap-6 mt-10">
 			<div>
 				<input
@@ -96,8 +141,11 @@
 					bind:value={prenom}
 					placeholder="Prénom"
 					required
-					class="w-full p-2 border-2 border-black shadow bg-white focus:border-pink-400 focus:ring-pink-400"
+					class="w-full p-2 border-2 border-black bg-[#ffffffcf] backdrop-blur-lg shadow-md focus:border-pink-400 focus:ring-pink-400"
 				/>
+				{#if formErrors.prenom}
+					<p class="error text-red-500">{formErrors.prenom}</p>
+				{/if}
 			</div>
 			<div>
 				<input
@@ -106,8 +154,11 @@
 					bind:value={nom}
 					placeholder="Nom"
 					required
-					class="w-full p-2 border-2 border-black shadow bg-white focus:border-pink-400 focus:ring-pink-400"
+					class="w-full p-2 border-2 border-black bg-[#ffffffcf] backdrop-blur-lg shadow-md focus:border-pink-400 focus:ring-pink-400"
 				/>
+				{#if formErrors.nom}
+					<p class="error text-red-500">{formErrors.nom}</p>
+				{/if}
 			</div>
 			<div>
 				<input
@@ -116,8 +167,11 @@
 					bind:value={email}
 					placeholder="Email"
 					required
-					class="w-full p-2 border-2 border-black shadow bg-white focus:border-pink-400 focus:ring-pink-400"
+					class="w-full p-2 border-2 border-black bg-[#ffffffcf] backdrop-blur-lg shadow-md focus:border-pink-400 focus:ring-pink-400"
 				/>
+				{#if formErrors.email}
+					<p class="error text-red-500">{formErrors.email}</p>
+				{/if}
 			</div>
 			<div>
 				<input
@@ -125,13 +179,16 @@
 					id="telephone"
 					bind:value={telephone}
 					placeholder="Téléphone"
-					class="w-full p-2 border-2 border-black shadow bg-white focus:border-pink-400 focus:ring-pink-400"
+					class="w-full p-2 border-2 border-black bg-[#ffffffcf] backdrop-blur-lg shadow-md focus:border-pink-400 focus:ring-pink-400"
 				/>
+				{#if formErrors.telephone}
+					<p class="error text-red-500">{formErrors.telephone}</p>
+				{/if}
 			</div>
 
 			<!-- Achat d'une œuvre (Fixed Radio Selection) -->
 			<div>
-				<fieldset class="z-10">
+				<fieldset class="">
 					<legend class="text-lg">Voulez-vous acheter une œuvre ?</legend>
 					<div class="flex items-center gap-4 mt-2">
 						<label class="flex items-center gap-2 cursor-pointer">
@@ -152,8 +209,9 @@
 					id="oeuvreSelection"
 					on:change={ajouterOeuvre}
 					disabled={!acheter}
-					class="w-full p-2 border-2 border-black shadow bg-white transition-all
-						{acheter ? '' : 'opacity-50 cursor-not-allowed'}"
+					class="w-full p-2 border-2 border-black bg-[#ffffffcf] backdrop-blur-lg shadow-md transition-all {acheter
+						? ''
+						: 'opacity-50 cursor-not-allowed'}"
 				>
 					<option value="">-- Choisissez une œuvre --</option>
 					{#each oeuvresDisponibles as oeuvre}
@@ -186,8 +244,11 @@
 				id="message"
 				bind:value={message}
 				placeholder="Message"
-				class="w-full min-h-44 p-2 border-2 border-black shadow bg-white resize-none focus:border-pink-400 focus:ring-pink-400"
+				class="w-full min-h-44 p-2 border-2 border-black bg-[#ffffffcf] backdrop-blur-lg shadow-md resize-none focus:border-pink-400 focus:ring-pink-400"
 			></textarea>
+			{#if formErrors.message}
+				<p class="error text-red-500">{formErrors.message}</p>
+			{/if}
 		</div>
 
 		<!-- Submit Button -->
@@ -197,9 +258,24 @@
 				on:click={envoyerFormulaire}
 				class="btn-effect border-2 border-black bg-white backdrop-blur-lg text-black"
 			>
-				<span>Envoyer</span>
+				<!-- svelte-ignore missing-declaration -->
+				{#if loading}
+					<Icon icon="mdi:loading" class="animate-spin w-7 h-17" />
+					<!-- Utilisez l'icône de votre choix ici -->
+				{:else}
+					<span>Envoyer</span>
+				{/if}
 			</button>
 		</div>
+		<!-- Decoration bubbles  -->
+		<div
+			class="absolute pointer-events-none -top-10 -left-16 w-56 h-56 rounded-full bg-pink-400 filter blur-3xl opacity-80 mix-blend-multiply shape animate-pulse"
+		></div>
+		<div
+			class="absolute pointer-events-none -top-16 -right-12 w-56 h-56 rounded-full bg-yellow-400 filter blur-3xl opacity-80 mix-blend-multiply shape animate-bounce"
+		></div>
+		<div
+			class="absolute pointer-events-none -bottom-5 left-1/2 transform -translate-x-1/2 w-56 h-56 rounded-full bg-violet-400 filter blur-3xl opacity-80 mix-blend-multiply shape animate-spin"
+		></div>
 	</form>
 </section>
-
