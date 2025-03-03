@@ -9,7 +9,7 @@
 <footer class="w-full flex items-center justify-center bg-white border-t-2 border-gray-600 pt-4">
 	<div class="md:w-2/3 w-full px-4 text-black flex flex-col text-center md:text-left">
 		<div class="w-full text-6xl md:text-7xl font-bold">
-			<h1 class="w-full md:w-2/3">{footerData.slogan}</h1>
+			<h2 class="w-full md:w-2/3 text-pink-500">{footerData.slogan}</h2>
 		</div>
 		<div class="flex mt-8 flex-col md:flex-row md:justify-between">
 			<p class="w-full md:w-2/3 text-gray-700">
