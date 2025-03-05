@@ -10,7 +10,7 @@ export async function load({ params, fetch, cookies, url }: {
 }) {
 	const client = createClient({ fetch, cookies });
 
-	// ✅ Get the current page number from the query string safely
+	// Get the current page number from the query string safely
 	const currentPage = Number(url.searchParams.get('page')) || 1;
 	const pageSize = 20;
 
@@ -19,34 +19,38 @@ export async function load({ params, fetch, cookies, url }: {
 			throw error(400, "Missing UID parameter");
 		}
 
-		// ✅ Fetch the page from Prismic
 		const page = await client.getByUID('page', params.uid).catch(err => {
 			return null;
 		});
 
-		const OeuvreType = await client.getAllByType('oeuvres_type').catch(err => {
-			return null;
+		// Fetch oeuvre types and build a map for quick lookup
+		const oeuvreTypes = await client.getAllByType('oeuvres_type');
+		const oeuvreTypeMap = new Map(oeuvreTypes.map(type => [type.id, type]));
+
+		const oeuvresResponse = await client.get({
+			predicates: [prismicPredicate.at('document.type', 'oeuvres')],
+			pageSize,
+			page: currentPage,
 		});
 
-		// ✅ Handle missing page
+		const oeuvresWithTypes = oeuvresResponse.results.map(oeuvre => {
+			const typeDetails = oeuvreTypeMap.get((oeuvre.data as any).type.id); // Ensure this ID corresponds correctly
+			return {
+				...oeuvre,
+				typeDetails: typeDetails ? {
+					titre: typeDetails.data.titre,
+					description: typeDetails.data.description 
+				} : undefined
+			};
+		});
+
 		if (!page || !page.data) {
 			throw error(404, `Page "${params.uid}" not found`);
 		}
 
-		// ✅ Fetch œuvres (artworks)
-		const oeuvresResponse = await client
-			.get({
-				predicates: [prismicPredicate.at('document.type', 'oeuvres')],
-				pageSize,
-				page: currentPage,
-			})
-			.catch(err => {
-				return { results: [], total_pages: 1 };
-			});
-
 		return {
 			page,
-			oeuvres: oeuvresResponse.results ?? [],
+			oeuvres: oeuvresWithTypes,
 			totalPages: oeuvresResponse.total_pages ?? 1,
 			currentPage,
 			nextPage: currentPage < (oeuvresResponse.total_pages ?? 1) ? currentPage + 1 : null,

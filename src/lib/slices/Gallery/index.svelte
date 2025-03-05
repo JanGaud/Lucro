@@ -12,7 +12,7 @@
 	$: oeuvres = pageData?.oeuvres ?? [];
 	$: currentPage = pageData?.currentPage ?? 1;
 	$: totalPages = pageData?.totalPages ?? 1;
-
+	
 	// Function to navigate pages
 	function changePage(pageNumber: number) {
 		goto(`?page=${pageNumber}`, { invalidateAll: true });
@@ -64,7 +64,7 @@
 							{oeuvre.data.titre}
 						</h3>
 						<p class="text-sm drop-shadow-md">{oeuvre.data.dimensions}</p>
-						<p class="text-md mt-1 drop-shadow-md">{oeuvre.data.type?.uid}</p>
+						<p class="text-md mt-1 drop-shadow-md">{oeuvre.typeDetails?.titre}</p>
 
 						{#if oeuvre.data.vendue}
 							<span class="mt-2 inline-block w-fit px-3 py-1 text-xs font-semibold text-white bg-red-500 rounded-full">

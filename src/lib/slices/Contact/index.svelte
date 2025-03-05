@@ -99,7 +99,6 @@
 				});
 
 				if (response.ok) {
-					console.log('Response OK');
 					prenom = '';
 					nom = '';
 					email = '';
@@ -113,7 +112,6 @@
 					displayPopup(`Erreur lors de l'envoi: ${errorText}`);
 				}
 			} catch (error) {
-				console.error('Erreur:', error);
 				displayPopup('Impossible d’envoyer le message.');
 			} finally {
 				loading = false;

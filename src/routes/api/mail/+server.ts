@@ -41,7 +41,7 @@ export const POST: RequestHandler = async ({ request }) => {
                     <p><strong>Email:</strong> ${email}</p>
                     <p><strong>Téléphone:</strong> ${telephone || 'Non fourni'}</p>
                     <p><strong>Souhaite acheter:</strong> ${acheter ? 'Oui' : 'Non'}</p>
-                    <p><strong>Œuvres sélectionnées:</strong> ${oeuvres.length > 0 ? oeuvres.map(o => o.titre).join(', ') : 'Aucune'}</p>
+                    <p><strong>Œuvres sélectionnées:</strong> ${oeuvres.length > 0 ? oeuvres.map((o: { titre: any; }) => o.titre).join(', ') : 'Aucune'}</p>
                     <h2>Message:</h2>
                     <p>${message.replace(/\n/g, '<br>')}</p>
                 </body>
