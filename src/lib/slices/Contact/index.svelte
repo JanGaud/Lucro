@@ -276,4 +276,20 @@
 			class="absolute pointer-events-none -bottom-5 left-1/2 transform -translate-x-1/2 w-56 h-56 rounded-full bg-violet-400 filter blur-3xl opacity-80 mix-blend-multiply shape animate-spin"
 		></div>
 	</form>
+	<div class="grid md:grid-cols-2 gap-4 h-fit md:h-16 w-full text-xl md:text-2xl mt-20">
+		<a
+			href="tel:+{slice.primary.telephone}"
+			class="p-2 flex items-center gap-4 rounded-full border-2 border-black bg-[#ffffffcf] backdrop-blur-lg"
+		>
+			<Icon icon="iconoir:phone" class="h-full w-auto" />
+			<div class=""><p>{slice.primary.telephone}</p></div>
+		</a>
+		<a
+			href="mailto:{slice.primary.courriel}"
+			class="p-2 flex items-center gap-4 rounded-full border-2 text-white border-pink-400 bg-[#000000cf] backdrop-blur-lg"
+		>
+			<Icon icon="ic:outline-alternate-email" class="h-full w-auto" />
+			<div class=""><p>{slice.primary.courriel}</p></div>
+		</a>
+	</div>
 </section>
