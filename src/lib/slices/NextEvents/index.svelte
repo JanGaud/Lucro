@@ -1,12 +1,12 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 	import { PrismicImage, PrismicLink } from '@prismicio/svelte';
-	import { page } from '$app/state';
+	import { page } from '$app/stores';
 	import Icon from '@iconify/svelte';
 
 	export let slice: Content.NextEventsSlice;
 
-	let events = page.data.closestEvents;
+	let events = $page.data.closestEvents;
 	let duplicateEvents = [...events, ...events];
 
 	// Function to format a single date in French format

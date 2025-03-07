@@ -2,7 +2,7 @@
 	import Icon from '@iconify/svelte';
 	import type { Content } from '@prismicio/client';
 	import { onMount } from 'svelte';
-	import { page } from '$app/state';
+	import { page } from '$app/stores';
 	import Popup from '$lib/components/Popup.svelte';
 	import {
 		validateName,
@@ -39,7 +39,7 @@
 	};
 
 	onMount(() => {
-		oeuvresDisponibles = page.data.oeuvres.filter(
+		oeuvresDisponibles = $page.data.oeuvres.filter(
 			(oeuvre: { data: { vendue: boolean } }) => !oeuvre.data.vendue
 		);
 	});

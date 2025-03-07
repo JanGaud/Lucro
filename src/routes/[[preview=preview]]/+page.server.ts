@@ -35,6 +35,7 @@ export async function load({ fetch, cookies }: { fetch: (input: RequestInfo, ini
 			} : { titre: "Unknown Type", description: "No description available" }
 		};
 	});
+	
 
 	return {
 		page,
@@ -42,6 +43,6 @@ export async function load({ fetch, cookies }: { fetch: (input: RequestInfo, ini
 		title: asText(page.data.title),
 		meta_description: page.data.meta_description,
 		meta_title: page.data.meta_title,
-		meta_image: page.data.meta_image?.url
+		meta_image: page.data.meta_image.url
 	};
 }
