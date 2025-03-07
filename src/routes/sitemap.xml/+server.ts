@@ -16,8 +16,10 @@ export const GET: RequestHandler = async ({ request }) => {
         nav = null;
     }
 
-    // Your site's base URL (remove the trailing slash to avoid double slashes in the URL concatenation)
-    const baseUrl = 'https://lucro-seven.vercel.app';
+    // Dynamically determine the base URL from the request
+    const host = request.headers.get('host');
+    const protocol = request.headers.get('x-forwarded-proto') || 'https';  // Default to 'https' if header is not present
+    const baseUrl = `${protocol}://${host}`;
 
     // Default static routes
     const staticRoutes = [
