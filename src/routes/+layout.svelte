@@ -11,6 +11,8 @@
 
 	injectSpeedInsights();
 	injectAnalytics();
+
+	console.log('layout', page.data.meta_image);
 </script>
 
 <svelte:head>
