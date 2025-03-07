@@ -14,6 +14,7 @@
 </script>
 
 <svelte:head>
+	<link rel="canonical" href="{page.url.toString()}" />
 	{#if page.data}
 		<title>{page.data.meta_title || 'Default Title'}</title>
 
