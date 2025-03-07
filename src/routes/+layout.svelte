@@ -14,7 +14,7 @@
 </script>
 
 <svelte:head>
-	<link rel="canonical" href="{$page.url.toString()}" />
+	<link rel="canonical" href={$page.url.toString()} />
 	{#if $page.data}
 		<title>{$page.data.meta_title || 'Default Title'}</title>
 
@@ -27,8 +27,8 @@
 		{/if}
 
 		{#if $page.data.meta_image}
-			<meta name="og:image" content={$page.data.meta_image.url} />
-			<meta name="twitter:card" content="summary_large_image" />
+			<meta name="og:image" content={$page.data.meta_image} />
+			<meta name="twitter:card" content={$page.data.meta_image} />
 		{/if}
 	{/if}
 </svelte:head>
