@@ -39,7 +39,7 @@
 			<hr class="border-gray-600" />
 			<div class="my-12 flex flex-col items-center md:flex-row md:items-baseline justify-center gap-4">
 				<!-- Logo -->
-				<a href="/" class="w-24 md:w-20 h-fit overflow-hidden">
+				<a href="/" rel="canonical" class="w-24 md:w-20 h-fit overflow-hidden">
 					<PrismicImage field={footerData.logo} class="w-28 h-auto" />
 				</a>
 				<p class="w-full text-center text-gray-700">{footerData.droits}</p>
