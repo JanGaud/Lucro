@@ -15,7 +15,7 @@ export async function load({ fetch }: { fetch: (input: RequestInfo, init?: Reque
     } catch (error) {
         nav = null;
     }
-
+    
     try {
         footer = await client.getSingle('footer');
     } catch (error) {
