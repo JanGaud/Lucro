@@ -8,11 +8,10 @@
 	import Lightbox from '$lib/components/Lightbox.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	import Qrcode from '$lib/components/Qrcode.svelte';
 
 	injectSpeedInsights();
 	injectAnalytics();
-
-	console.log('page', $page.data.meta_image);
 </script>
 
 <svelte:head>

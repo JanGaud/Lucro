@@ -22,3 +22,5 @@ export function validateMessage(message: string): string | null {
     if (message.length < 10) return "Le message doit contenir au moins 10 caractères.";
     return null;
 }
+
+

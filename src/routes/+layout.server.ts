@@ -3,12 +3,14 @@ export const ssr = true;
 import { createClient } from '$lib/prismicio';
 import "../app.css";
 
-export async function load({ fetch }: { fetch: (input: RequestInfo, init?: RequestInit) => Promise<Response> }) {
+export async function load({ fetch, request }: { fetch: (input: RequestInfo, init?: RequestInit) => Promise<Response>, request: Request }) {
     const client = createClient({ fetch });
 
     let nav;
     let footer;
     let events: any[] = [];
+    const host = request.headers.get('host');
+    const protocol = request.headers.get('x-forwarded-proto') || 'https';
 
     try {
         nav = await client.getSingle('navigation');
@@ -62,6 +64,7 @@ export async function load({ fetch }: { fetch: (input: RequestInfo, init?: Reque
         nav,
         footer,
         events,
+        url : `${protocol}://${host}`,
         closestEvents
     };
 }

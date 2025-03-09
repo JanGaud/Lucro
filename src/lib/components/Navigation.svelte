@@ -1,5 +1,6 @@
 <script>
 	import { page } from '$app/stores';
+	import Icon from '@iconify/svelte';
 	import { PrismicImage, PrismicLink } from '@prismicio/svelte';
 	import { writable } from 'svelte/store';
 
@@ -32,6 +33,15 @@
 				class="relative h-full flex items-center text-black hover:text-pink-400 transition-colors duration-200 after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-pink-400 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100"
 			/>
 		{/each}
+	{#each navData.social_media as link (link.key)}
+		<PrismicLink
+			field="{link}"
+			target="_blank"
+			class="text-black hover:text-pink-400 transition-colors duration-200 pl-6"
+		>
+			<Icon icon={link.text} width="24" height="24" />
+		</PrismicLink>
+	{/each}
 	</div>
 	<!-- Mobile Hamburger Button -->
 	<button
@@ -80,5 +90,14 @@
 			field={lien}
 			class="block text-black active:text-pink-400 transition-colors duration-200 uppercase"
 		/>
+	{/each}
+	{#each navData.social_media as link (link.key)}
+		<PrismicLink
+			field="{link}"
+			target="_blank"
+			class="text-black hover:text-pink-400 transition-colors duration-200"
+		>
+			<Icon icon={link.text} width="24" height="24" />
+		</PrismicLink>
 	{/each}
 </div>

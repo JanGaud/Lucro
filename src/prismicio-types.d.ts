@@ -208,6 +208,19 @@ interface NavigationDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
 	lien: prismic.Repeatable<prismic.LinkField<string, string, unknown, prismic.FieldState, never>>;
+
+	/**
+	 * Social Media field in *navigation*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: navigation.social_media
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	social_media: prismic.Repeatable<
+		prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+	>;
 }
 
 /**

@@ -35,6 +35,17 @@
 					"allowText": true,
 					"repeat": true
 				}
+			},
+			"social_media": {
+				"type": "Link",
+				"config": {
+					"label": "Social Media",
+					"placeholder": "",
+					"select": null,
+					"allowTargetBlank": true,
+					"allowText": true,
+					"repeat": true
+				}
 			}
 		}
 	}

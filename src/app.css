@@ -129,6 +129,6 @@ h6 {
     animation-delay: -4s;
 }
 
-
-/* radio button */
-
+.backdrop-blur-css {
+    backdrop-filter: blur(10px);
+}
