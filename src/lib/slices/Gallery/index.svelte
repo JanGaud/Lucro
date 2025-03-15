@@ -81,32 +81,6 @@
 	}
 </script>
 
-<style>
-	/* Hide navigation when at the bottom */
-	.nav-hidden {
-		transform: translateY(100%);
-		opacity: 0;
-		pointer-events: none;
-		transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-	}
-
-	/* Force the nav to stay at the bottom even when browser UI changes */
-	.fixed-nav {
-		position: fixed;
-		left: 0;
-		right: 0;
-		bottom: 0; /* Stick it to the bottom */
-		width: 100%;
-		z-index: 50;
-	}
-
-	@media (max-width: 768px) {
-		.fixed-nav {
-			bottom: env(safe-area-inset-bottom, 0); /* For iPhones with notch */
-		}
-	}
-</style>
-
 <section class="relative mt-10 px-6 md:px-16 lg:px-38 pt-22 md:pt-26">
 	<h1 class="text-5xl md:text-6xl text-center mb-10">{slice.primary.titre}</h1>
 
@@ -172,3 +146,28 @@
 	<!-- Invisible Observer at the bottom -->
 	<div bind:this={bottomObserver} class="h-32 w-full"></div>
 </section>
+
+
+<style>
+	.nav-hidden {
+		transform: translateY(100%);
+		opacity: 0;
+		pointer-events: none;
+		transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+	}
+
+	.fixed-nav {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0; /* Stick it to the bottom */
+		width: 100%;
+		z-index: 50;
+	}
+
+	@media (max-width: 768px) {
+		.fixed-nav {
+			bottom: env(safe-area-inset-bottom, 0);
+		}
+	}
+</style>
