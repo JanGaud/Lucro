@@ -107,7 +107,7 @@
 	}
 </style>
 
-<section class="relative mt-10 px-6 md:px-16 lg:px-38 py-22 md:py-26">
+<section class="relative mt-10 px-6 md:px-16 lg:px-38 pt-22 md:pt-26">
 	<h1 class="text-5xl md:text-6xl text-center mb-10">{slice.primary.titre}</h1>
 
 	<!-- Bento Grid -->
