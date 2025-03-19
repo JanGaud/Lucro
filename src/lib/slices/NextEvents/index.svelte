@@ -11,34 +11,39 @@
 
 	// Function to format a single date in French format
 	const formatDate = (dateString: string, includeYear = true): string => {
-		const date = new Date(dateString);
-		return new Intl.DateTimeFormat('fr-FR', {
-			day: 'numeric',
-			month: 'long',
-			...(includeYear ? { year: 'numeric' } : {}) // Include year only when needed
-		}).format(date);
+		const date = new Date(`${dateString}T00:00:00Z`); // Ensures UTC interpretation
+		const day = date.getUTCDate(); // Extracts UTC day to prevent shifts
+		const month = new Intl.DateTimeFormat('fr-FR', { month: 'long', timeZone: 'UTC' }).format(date);
+		const year = date.getUTCFullYear();
+
+		return includeYear ? `${day} ${month} ${year}` : `${day} ${month}`;
 	};
 
 	// Function to determine how to display event dates
 	const formatEventDates = (event: { data: { dates: any; duree_prolonge: any } }): string => {
-		const dates = event.data.dates;
+		if (!event.data.dates || event.data.dates.length === 0) return 'Date inconnue';
+
+		const dates = event.data.dates.filter((d: { date: any; }) => d.date); // Remove invalid entries
 		const isExtended = event.data.duree_prolonge;
 
-		// Extract month and year from the first date
-		let firstDate = new Date(dates[0].date);
-		let firstMonth = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(firstDate);
-		let year = new Intl.DateTimeFormat('fr-FR', { year: 'numeric' }).format(firstDate);
+		if (dates.length === 0) return 'Date inconnue';
 
-		if (isExtended && dates.length >= 2) {
-			// Display "Du 21 octobre au 13 novembre"
-			let startDate = formatDate(dates[0].date, false); // Day + Month
-			let endDate = formatDate(dates[1].date); // Day + Month + Year
+		if (isExtended && dates.length >= 2 && dates[1]?.date) {
+			let startDate = formatDate(dates[0].date, false);
+			let endDate = formatDate(dates[1].date);
 			return `Du ${startDate} au ${endDate}`;
 		} else {
-			// Display "Le 5, 6, 7 octobre"
 			let groupedDays = dates
-				.map((d: { date: string | number | Date }) => new Date(d.date).getDate())
+				.map((d: { date: string; }) => {
+					return formatDate(d.date, false).split(' ')[0]; // Extract only the day
+				})
 				.join(', ');
+
+			let firstMonth = new Intl.DateTimeFormat('fr-FR', { month: 'long', timeZone: 'UTC' }).format(
+				new Date(dates[0].date)
+			);
+			let year = new Date(dates[0].date).getUTCFullYear();
+
 			return `Le ${groupedDays} ${firstMonth} ${year}`;
 		}
 	};
@@ -50,21 +55,27 @@
 	data-slice-variation={slice.variation}
 >
 	<div class="text-right mb-8 px-4 md:px-16 lg:px-38">
-		<PrismicLink class="hover:text-pink-400 transition-colors duration-300 uppercase" field={slice.primary.voir_plus} />
+		<PrismicLink
+			class="hover:text-pink-400 transition-colors duration-300 uppercase"
+			field={slice.primary.voir_plus}
+		/>
 	</div>
 
 	<div class="scroll-wrapper">
 		<ul class="scroll-content">
 			{#each duplicateEvents as event}
 				<li
-					class="w-[325px] md:w-[400px] flex border-2 border-gray-100 shadow-md hover:border-pink-400  rounded-lg  transition-colors duration-300"
+					class="w-[325px] md:w-[400px] flex border-2 border-gray-100 shadow-md hover:border-pink-400 rounded-lg transition-colors duration-300"
 				>
-					<div class="w-full h-full flex justify-between  rounded-lg ">
+					<div class="w-full h-full flex justify-between rounded-lg">
 						<div
-							class="h-auto w-1/3 bg-gray-50 flex items-center justify-center  rounded-lg  overflow-hidden border-r border-gray-100 p-1"
+							class="h-auto w-1/3 bg-gray-50 flex items-center justify-center rounded-lg overflow-hidden border-r border-gray-100 p-1"
 						>
 							{#if event.data.logo?.url}
-								<PrismicImage field={event.data.logo} class="h-full w-full object-contain drop-shadow-md" />
+								<PrismicImage
+									field={event.data.logo}
+									class="h-full w-full object-contain drop-shadow-md"
+								/>
 							{:else}
 								<Icon class="h-20 w-20 drop-shadow-md" icon="fxemoji:artistpalette" />
 							{/if}

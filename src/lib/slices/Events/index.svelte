@@ -10,29 +10,35 @@
 
 	// ✅ Function to format a single date in French
 	const formatDate = (dateString: string, includeYear = true): string => {
-		const date = new Date(dateString);
-		return new Intl.DateTimeFormat('fr-FR', {
-			day: 'numeric',
-			month: 'long',
-			...(includeYear ? { year: 'numeric' } : {})
-		}).format(date);
+		const date = new Date(`${dateString}T00:00:00Z`); // Ensures UTC interpretation
+		const day = date.getUTCDate(); // Extracts UTC day to prevent shifts
+		const month = new Intl.DateTimeFormat('fr-FR', { month: 'long', timeZone: 'UTC' }).format(date);
+		const year = date.getUTCFullYear();
+
+		return includeYear ? `${day} ${month} ${year}` : `${day} ${month}`;
 	};
 
 	// ✅ Function to format event dates
 	const formatEventDates = (event: { data: { dates: any; duree_prolonge: any } }): string => {
-		const dates = event.data.dates;
+		if (!event.data.dates || event.data.dates.length === 0) return 'Date inconnue';
+
+		const dates = event.data.dates.filter((d: { date: any; }) => d.date); // Remove invalid entries
 		const isExtended = event.data.duree_prolonge;
 
-		let firstDate = new Date(dates[0].date);
-		let firstMonth = new Intl.DateTimeFormat('fr-FR', { month: 'long' }).format(firstDate);
-		let year = new Intl.DateTimeFormat('fr-FR', { year: 'numeric' }).format(firstDate);
+		if (dates.length === 0) return 'Date inconnue';
 
 		if (isExtended && dates.length >= 2) {
 			let startDate = formatDate(dates[0].date, false);
 			let endDate = formatDate(dates[dates.length - 1].date);
 			return `Du ${startDate} au ${endDate}`;
 		} else {
-			let groupedDays = dates.map((d: { date: string }) => new Date(d.date).getDate()).join(', ');
+			let groupedDays = dates.map((d: { date: string; }) => formatDate(d.date, false).split(' ')[0]).join(', ');
+
+			let firstMonth = new Intl.DateTimeFormat('fr-FR', { month: 'long', timeZone: 'UTC' }).format(
+				new Date(`${dates[0].date}T00:00:00Z`)
+			);
+			let year = new Date(`${dates[0].date}T00:00:00Z`).getUTCFullYear();
+
 			return `Le ${groupedDays} ${firstMonth} ${year}`;
 		}
 	};
