@@ -102,7 +102,7 @@
 		<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 			{#each filteredEvents as event}
 				<li
-					class="bg-white border-2 border-gray-300 hover:border-pink-400 duration-300 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col"
+					class="bg-white border hover:border-pink-400 duration-300 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col"
 				>
 					<!-- ✅ Event Image / Logo -->
 					<div

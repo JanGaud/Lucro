@@ -65,7 +65,7 @@
 		<ul class="scroll-content">
 			{#each duplicateEvents as event}
 				<li
-					class="w-[325px] md:w-[400px] flex border-2 border-gray-100 shadow-md hover:border-pink-400 rounded-lg transition-colors duration-300"
+					class="w-[325px] md:w-[400px] flex border border-black shadow-md hover:border-pink-400 rounded-lg transition-colors duration-300"
 				>
 					<div class="w-full h-full flex justify-between rounded-lg">
 						<div
